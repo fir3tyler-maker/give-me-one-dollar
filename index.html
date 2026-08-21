@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,9 @@
 
 <meta name="description"
 content="Seven billion people give me one dollar. Let's beat Elon Musk.">
+
+<!-- Netlify Identity Widget -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <style>
 
@@ -28,29 +32,21 @@ body {
     overflow-x: hidden;
 }
 
-/* Background */
-
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
     opacity: 0.09;
-
     background-image:
         radial-gradient(#111 1px, transparent 1px);
-
     background-size: 24px 24px;
 }
-
-/* Container */
 
 .container {
     width: min(1150px, 92%);
     margin: auto;
 }
-
-/* Navigation */
 
 nav {
     display: flex;
@@ -69,16 +65,11 @@ nav {
     color: #111;
     background: white;
     text-decoration: none;
-
     border: 3px solid #111;
     border-radius: 999px;
-
     padding: 10px 17px;
-
     font-weight: 900;
 }
-
-/* Hero */
 
 .hero {
     text-align: center;
@@ -89,9 +80,7 @@ h1 {
     font-size: clamp(48px, 9vw, 105px);
     line-height: 0.88;
     letter-spacing: -6px;
-
     text-transform: uppercase;
-
     max-width: 1100px;
     margin: 20px auto;
 }
@@ -99,47 +88,29 @@ h1 {
 .subheadline {
     font-size: clamp(21px, 3vw, 30px);
     font-weight: 800;
-
     margin: 25px auto 40px;
-
     max-width: 800px;
 }
 
-/* Main Card */
-
 .main-card {
     max-width: 950px;
-
     margin: auto;
-
     background: #fffdf3;
-
     border: 4px solid #111;
     border-radius: 40px;
-
     padding: 40px 30px;
-
     box-shadow: 12px 12px 0 #111;
 }
-
-/* Doge */
 
 .doge {
     width: 310px;
     height: 310px;
-
     object-fit: cover;
-
     display: block;
-
     margin: 0 auto 35px;
-
     border-radius: 50%;
-
     border: 6px solid #111;
-
     box-shadow: 9px 9px 0 #111;
-
     animation: floatDoge 3s ease-in-out infinite;
 }
 
@@ -152,177 +123,111 @@ h1 {
     50% {
         transform: translateY(-10px);
     }
-}
 
-/* Counter */
+}
 
 .counter-label {
     font-size: 20px;
     font-weight: 900;
-
     text-transform: uppercase;
-
     color: #6d6555;
 }
 
 .counter {
     font-size: clamp(48px, 9vw, 92px);
-
     font-weight: 1000;
-
     letter-spacing: -6px;
-
     line-height: 1;
-
     margin: 8px 0;
 }
 
 .target {
     font-size: 20px;
     font-weight: 900;
-
     color: #6d6555;
 }
 
-/* Progress */
-
 .progress-box {
     height: 38px;
-
     background: #e5ddc4;
-
     border: 3px solid #111;
-
     border-radius: 999px;
-
     overflow: hidden;
-
     margin: 28px 0 15px;
 }
 
 .progress {
     height: 100%;
     width: 0%;
-
     background:
         linear-gradient(
             90deg,
             #ffd43b,
             #ff9f00
         );
-
     transition: width 0.5s ease;
 }
-
-/* People */
 
 .people {
     font-size: 18px;
     font-weight: 900;
 }
 
-/* Elon */
-
 .elon {
     margin-top: 35px;
-
     font-size: clamp(35px, 6vw, 65px);
-
     line-height: 0.95;
-
     font-weight: 1000;
-
     letter-spacing: -3px;
-
     text-transform: uppercase;
 }
 
 .elon span {
     display: block;
-
     background: #ffd43b;
-
     border: 3px solid #111;
-
     border-radius: 12px;
-
     padding: 8px 15px;
-
     width: fit-content;
-
     margin: 15px auto 0;
-
     transform: rotate(-2deg);
 }
 
-/* Button */
-
 .give-button {
-
     display: inline-block;
-
     margin-top: 35px;
-
     padding: 19px 32px;
-
     background: #111;
-
     color: white;
-
     text-decoration: none;
-
     border-radius: 17px;
-
     font-size: 24px;
-
     font-weight: 1000;
-
     border: 3px solid #111;
-
     box-shadow: 7px 7px 0 #ff9f00;
-
     transition: 0.15s;
 }
 
 .give-button:hover {
-
-    transform:
-        translate(4px, 4px);
-
-    box-shadow:
-        3px 3px 0 #ff9f00;
+    transform: translate(4px, 4px);
+    box-shadow: 3px 3px 0 #ff9f00;
 }
-
-/* Small text */
 
 .note {
     margin-top: 20px;
-
     font-size: 14px;
-
     color: #756d5c;
-
     font-weight: 700;
 }
-
-/* Footer */
 
 footer {
-
     border-top: 3px solid #111;
-
     margin-top: 40px;
-
     padding: 40px 0 60px;
-
     text-align: center;
-
     color: #756d5c;
-
     font-weight: 700;
 }
-
-/* Mobile */
 
 @media (max-width: 700px) {
 
@@ -332,9 +237,7 @@ footer {
 
     .main-card {
         padding: 30px 17px;
-
-        box-shadow:
-            7px 7px 0 #111;
+        box-shadow: 7px 7px 0 #111;
     }
 
     .doge {
@@ -348,6 +251,163 @@ footer {
 
 }
 
+
+/* =====================================================
+   IDENTITY AUTHENTICATION SCREEN
+   ===================================================== */
+
+#identity-screen {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 999999;
+
+    background: #fff6d5;
+
+    overflow-y: auto;
+}
+
+.identity-wrapper {
+    width: min(520px, 92%);
+    margin: 70px auto;
+}
+
+.identity-card {
+    background: #fffdf3;
+
+    border: 4px solid #111;
+
+    border-radius: 30px;
+
+    padding: 35px 28px;
+
+    box-shadow: 10px 10px 0 #111;
+
+    text-align: center;
+}
+
+.identity-card h2 {
+    font-size: 38px;
+    line-height: 1;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.identity-card p {
+    color: #6d6555;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.identity-card label {
+    display: block;
+    text-align: left;
+    font-weight: 900;
+    margin: 18px 0 7px;
+}
+
+.identity-card input {
+    width: 100%;
+
+    padding: 15px;
+
+    border: 3px solid #111;
+
+    border-radius: 12px;
+
+    background: white;
+
+    color: #111;
+
+    font-size: 17px;
+
+    outline: none;
+}
+
+.identity-card input:focus {
+    box-shadow: 4px 4px 0 #ffd43b;
+}
+
+.identity-submit {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 16px;
+
+    border: 3px solid #111;
+
+    border-radius: 14px;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 1000;
+
+    cursor: pointer;
+}
+
+.identity-submit:hover {
+    background: #222;
+}
+
+.identity-error {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: #ffd5d5;
+
+    border: 2px solid #b00000;
+
+    color: #8b0000;
+
+    font-weight: 800;
+}
+
+.identity-success {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: #d8ffd8;
+
+    border: 2px solid #087508;
+
+    color: #075d07;
+
+    font-weight: 800;
+}
+
+.identity-close {
+    margin-top: 18px;
+
+    border: 0;
+
+    background: transparent;
+
+    text-decoration: underline;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    color: #555;
+}
+
 </style>
 </head>
 
@@ -355,10 +415,96 @@ footer {
 <body>
 
 
+<!-- =====================================================
+     IDENTITY PASSWORD SETUP / RECOVERY
+     ===================================================== -->
+
+<div id="identity-screen">
+
+    <div class="identity-wrapper">
+
+        <div class="identity-card">
+
+            <div style="font-size:55px;">
+                🐕
+            </div>
+
+            <h2 id="identity-title">
+                Create your password
+            </h2>
+
+            <p id="identity-description">
+                Finish setting up your administrator account.
+            </p>
+
+
+            <form id="identity-form">
+
+                <label for="identity-password">
+                    Password
+                </label>
+
+                <input
+                    id="identity-password"
+                    type="password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                >
+
+
+                <label for="identity-password-confirm">
+                    Confirm password
+                </label>
+
+                <input
+                    id="identity-password-confirm"
+                    type="password"
+                    minlength="8"
+                    autocomplete="new-password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="identity-submit"
+                >
+                    ACTIVATE ACCOUNT
+                </button>
+
+
+                <div
+                    id="identity-error"
+                    class="identity-error"
+                ></div>
+
+
+                <div
+                    id="identity-success"
+                    class="identity-success"
+                ></div>
+
+            </form>
+
+
+            <button
+                id="identity-close"
+                class="identity-close"
+                type="button"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <div class="container">
 
-
-<!-- NAVIGATION -->
 
 <nav>
 
@@ -375,9 +521,6 @@ footer {
 
 </nav>
 
-
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -399,13 +542,8 @@ footer {
     </p>
 
 
-
-    <!-- MAIN -->
-
     <div class="main-card">
 
-
-        <!-- DOGE -->
 
         <img
 
@@ -417,9 +555,6 @@ footer {
 
         >
 
-
-
-        <!-- COUNTER -->
 
         <div class="counter-label">
 
@@ -446,9 +581,6 @@ footer {
         </div>
 
 
-
-        <!-- PROGRESS -->
-
         <div class="progress-box">
 
             <div
@@ -457,7 +589,6 @@ footer {
             ></div>
 
         </div>
-
 
 
         <div
@@ -469,9 +600,6 @@ footer {
 
         </div>
 
-
-
-        <!-- ELON -->
 
         <div class="elon">
 
@@ -485,9 +613,6 @@ footer {
 
         </div>
 
-
-
-        <!-- CTA -->
 
         <div id="give">
 
@@ -522,7 +647,6 @@ footer {
 </section>
 
 
-
 <footer>
 
     <strong>
@@ -549,24 +673,12 @@ footer {
 
 <script>
 
-/*
-====================================================
-STRIPE PAYMENT LINK
-====================================================
-
-When you create your Stripe Payment Link,
-replace the text below with your real link.
-
-Example:
+/* =====================================================
+   STRIPE PAYMENT
+   ===================================================== */
 
 const STRIPE_LINK =
-"https://buy.stripe.com/xxxxxxxx";
-
-====================================================
-*/
-
-const STRIPE_LINK = "https://buy.stripe.com/14A9AL1PScxdfUx8N6ao800";
-
+    "https://buy.stripe.com/14A9AL1PScxdfUx8N6ao800";
 
 
 document
@@ -591,67 +703,566 @@ document
 
 
 
-/*
-====================================================
-DEMO COUNTER
+/* =====================================================
+   LIVE COUNTER
+   ===================================================== */
 
-This is only a visual demo for now.
+async function loadCounter() {
 
-Later we will connect this to
-the real Stripe payment data/database.
-====================================================
-*/
+    try {
 
-let amount = 0;
-let people = 0;
+        const response =
+            await fetch(
+                "/.netlify/functions/counter",
+                {
+                    cache: "no-store"
+                }
+            );
 
 
+        if (!response.ok) {
+            throw new Error(
+                "Counter request failed"
+            );
+        }
 
-function updateCounter() {
 
-    document.getElementById(
-        "amount"
-    ).textContent =
+        const data =
+            await response.json();
 
-        "$" +
 
-        amount.toLocaleString(
-            "en-US"
+        const amount =
+            Number(data.amount || 0);
+
+
+        const people =
+            Number(data.people || 0);
+
+
+        document.getElementById(
+            "amount"
+        ).textContent =
+            "$" +
+            amount.toLocaleString("en-US");
+
+
+        document.getElementById(
+            "people"
+        ).textContent =
+            people.toLocaleString("en-US") +
+            " PEOPLE";
+
+
+        const percentage =
+            (amount / 7000000000) * 100;
+
+
+        document.getElementById(
+            "progress"
+        ).style.width =
+            Math.min(
+                percentage,
+                100
+            ) + "%";
+
+
+    } catch (error) {
+
+        console.error(
+            "Counter error:",
+            error
         );
 
-
-    document.getElementById(
-        "people"
-    ).textContent =
-
-        people.toLocaleString(
-            "en-US"
-        ) +
-
-        " PEOPLE";
-
-
-    const percentage =
-
-        (amount / 7000000000) * 100;
-
-
-    document.getElementById(
-        "progress"
-    ).style.width =
-
-        Math.min(
-            percentage,
-            100
-        ) + "%";
+    }
 
 }
 
 
-updateCounter();
+loadCounter();
+
+
+/*
+ * Refresh counter every 15 seconds.
+ */
+
+setInterval(
+    loadCounter,
+    15000
+);
+
+
+
+/* =====================================================
+   NETLIFY IDENTITY
+   ===================================================== */
+
+const identityScreen =
+    document.getElementById(
+        "identity-screen"
+    );
+
+
+const identityTitle =
+    document.getElementById(
+        "identity-title"
+    );
+
+
+const identityDescription =
+    document.getElementById(
+        "identity-description"
+    );
+
+
+const identityForm =
+    document.getElementById(
+        "identity-form"
+    );
+
+
+const identityPassword =
+    document.getElementById(
+        "identity-password"
+    );
+
+
+const identityPasswordConfirm =
+    document.getElementById(
+        "identity-password-confirm"
+    );
+
+
+const identityError =
+    document.getElementById(
+        "identity-error"
+    );
+
+
+const identitySuccess =
+    document.getElementById(
+        "identity-success"
+    );
+
+
+const identityClose =
+    document.getElementById(
+        "identity-close"
+    );
+
+
+let identityMode =
+    null;
+
+
+let identityToken =
+    null;
+
+
+function showIdentityScreen(
+    mode,
+    token
+) {
+
+    identityMode =
+        mode;
+
+    identityToken =
+        token;
+
+
+    identityError.style.display =
+        "none";
+
+    identitySuccess.style.display =
+        "none";
+
+
+    identityPassword.value =
+        "";
+
+    identityPasswordConfirm.value =
+        "";
+
+
+    if (mode === "invite") {
+
+        identityTitle.textContent =
+            "Create your password";
+
+        identityDescription.textContent =
+            "Welcome! Create a password to activate your administrator account.";
+
+    }
+
+
+    if (mode === "recovery") {
+
+        identityTitle.textContent =
+            "Reset your password";
+
+        identityDescription.textContent =
+            "Create a new password for your account.";
+
+    }
+
+
+    identityScreen.style.display =
+        "block";
+
+}
+
+
+function showIdentityError(
+    message
+) {
+
+    identityError.textContent =
+        message;
+
+    identityError.style.display =
+        "block";
+
+}
+
+
+identityClose.addEventListener(
+    "click",
+    function() {
+
+        identityScreen.style.display =
+            "none";
+
+        identityMode =
+            null;
+
+        identityToken =
+            null;
+
+        /*
+         * Remove authentication token
+         * from the address bar.
+         */
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+
+    }
+);
+
+
+identityForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        identityError.style.display =
+            "none";
+
+
+        identitySuccess.style.display =
+            "none";
+
+
+        const password =
+            identityPassword.value;
+
+
+        const confirm =
+            identityPasswordConfirm.value;
+
+
+        if (password.length < 8) {
+
+            showIdentityError(
+                "Password must be at least 8 characters."
+            );
+
+            return;
+
+        }
+
+
+        if (password !== confirm) {
+
+            showIdentityError(
+                "The passwords do not match."
+            );
+
+            return;
+
+        }
+
+
+        if (!identityToken) {
+
+            showIdentityError(
+                "The authentication link is missing or has expired. Please request a new invitation."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            /*
+             * Netlify Identity widget API.
+             *
+             * The invitation/recovery token is
+             * supplied by Netlify in the URL.
+             */
+
+            if (
+                window.netlifyIdentity
+            ) {
+
+                identitySuccess.textContent =
+                    "Activating your account...";
+
+                identitySuccess.style.display =
+                    "block";
+
+
+                if (
+                    identityMode === "invite"
+                ) {
+
+                    await new Promise(
+                        function(resolve, reject) {
+
+                            window.netlifyIdentity.gotrue.acceptInvite(
+                                identityToken,
+                                password,
+                                function(error) {
+
+                                    if (error) {
+                                        reject(error);
+                                    } else {
+                                        resolve();
+                                    }
+
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                if (
+                    identityMode === "recovery"
+                ) {
+
+                    await new Promise(
+                        function(resolve, reject) {
+
+                            window.netlifyIdentity.gotrue.recover(
+                                identityToken,
+                                function(error) {
+
+                                    if (error) {
+                                        reject(error);
+                                    } else {
+                                        resolve();
+                                    }
+
+                                }
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                identitySuccess.textContent =
+                    "Account activated successfully! Redirecting...";
+
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "/admin/";
+
+                    },
+                    1200
+                );
+
+
+                return;
+
+            }
+
+
+            throw new Error(
+                "Netlify Identity is not available."
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Identity activation error:",
+                error
+            );
+
+
+            identitySuccess.style.display =
+                "none";
+
+
+            showIdentityError(
+                error.message ||
+                "Something went wrong. Please request a new invitation."
+            );
+
+        }
+
+    }
+);
+
+
+
+/*
+ * Process Netlify Identity URL.
+ *
+ * The invite/recovery link can arrive at:
+ *
+ * /
+ *
+ * with a hash such as:
+ *
+ * #invite_token=...
+ *
+ * #recovery_token=...
+ *
+ * #confirmation_token=...
+ *
+ */
+
+function processIdentityToken() {
+
+    const hash =
+        window.location.hash;
+
+
+    if (!hash) {
+        return;
+    }
+
+
+    const params =
+        new URLSearchParams(
+            hash.substring(1)
+        );
+
+
+    const inviteToken =
+        params.get(
+            "invite_token"
+        );
+
+
+    const recoveryToken =
+        params.get(
+            "recovery_token"
+        );
+
+
+    const confirmationToken =
+        params.get(
+            "confirmation_token"
+        );
+
+
+    if (inviteToken) {
+
+        showIdentityScreen(
+            "invite",
+            inviteToken
+        );
+
+        return;
+
+    }
+
+
+    if (recoveryToken) {
+
+        showIdentityScreen(
+            "recovery",
+            recoveryToken
+        );
+
+        return;
+
+    }
+
+
+    if (confirmationToken) {
+
+        /*
+         * Email confirmation has been completed
+         * by the Identity widget.
+         */
+
+        if (
+            window.netlifyIdentity
+        ) {
+
+            window.netlifyIdentity.on(
+                "init",
+                function(user) {
+
+                    if (user) {
+
+                        window.location.href =
+                            "/admin/";
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+
+}
+
+
+if (
+    window.netlifyIdentity
+) {
+
+    window.netlifyIdentity.on(
+        "init",
+        function(user) {
+
+            console.log(
+                "Netlify Identity initialized",
+                user
+            );
+
+        }
+    );
+
+}
+
+
+processIdentityToken();
 
 </script>
 
 
 </body>
 </html>
+```
