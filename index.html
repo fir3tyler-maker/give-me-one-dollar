@@ -1,15 +1,14 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin — Give Me One Dollar</title>
+<title>Give Me One Dollar</title>
 
 <meta
     name="description"
-    content="Administrator panel for Give Me One Dollar."
+    content="Seven billion people give me one dollar. Let's beat Elon Musk."
 >
 
 <style>
@@ -28,7 +27,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #fff6d5;
     color: #111;
-    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -42,19 +41,14 @@ body::before {
         radial-gradient(#111 1px, transparent 1px);
 
     background-size: 24px 24px;
+
+    z-index: -1;
 }
 
 .container {
-    width: min(900px, 92%);
+    width: min(1150px, 92%);
     margin: auto;
-    position: relative;
-    z-index: 1;
 }
-
-
-/* =====================================================
-   HEADER
-   ===================================================== */
 
 nav {
     display: flex;
@@ -69,7 +63,7 @@ nav {
     letter-spacing: -1px;
 }
 
-.site-button {
+.nav-button {
     color: #111;
     background: white;
     text-decoration: none;
@@ -82,217 +76,245 @@ nav {
     font-weight: 900;
 }
 
+.hero {
+    text-align: center;
+    padding: 45px 0 70px;
+}
 
-/* =====================================================
-   CARD
-   ===================================================== */
+h1 {
+    font-size: clamp(48px, 9vw, 105px);
+    line-height: 0.88;
+    letter-spacing: -6px;
+    text-transform: uppercase;
 
-.card {
-    max-width: 650px;
+    max-width: 1100px;
+    margin: 20px auto;
+}
 
-    margin: 70px auto;
+.subheadline {
+    font-size: clamp(21px, 3vw, 30px);
+    font-weight: 800;
+
+    margin: 25px auto 40px;
+
+    max-width: 800px;
+}
+
+.main-card {
+    max-width: 950px;
+
+    margin: auto;
 
     background: #fffdf3;
 
     border: 4px solid #111;
-    border-radius: 30px;
+    border-radius: 40px;
 
     padding: 40px 30px;
 
-    box-shadow: 10px 10px 0 #111;
+    box-shadow: 12px 12px 0 #111;
 }
 
-.card h1 {
-    font-size: clamp(45px, 9vw, 75px);
+.doge {
+    width: 310px;
+    height: 310px;
 
-    line-height: 0.9;
+    object-fit: cover;
 
-    letter-spacing: -5px;
+    display: block;
+
+    margin: 0 auto 35px;
+
+    border-radius: 50%;
+
+    border: 6px solid #111;
+
+    box-shadow: 9px 9px 0 #111;
+
+    animation: floatDoge 3s ease-in-out infinite;
+}
+
+@keyframes floatDoge {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+.counter-label {
+    font-size: 20px;
+    font-weight: 900;
 
     text-transform: uppercase;
 
-    margin-bottom: 15px;
-}
-
-.subtitle {
     color: #6d6555;
-
-    font-weight: 800;
-
-    line-height: 1.5;
-
-    margin-bottom: 30px;
 }
 
+.counter {
+    font-size: clamp(48px, 9vw, 92px);
 
-/* =====================================================
-   LOGIN FORM
-   ===================================================== */
+    font-weight: 1000;
 
-label {
-    display: block;
+    letter-spacing: -6px;
 
-    text-align: left;
+    line-height: 1;
 
+    margin: 8px 0;
+}
+
+.target {
+    font-size: 20px;
     font-weight: 900;
 
-    margin: 18px 0 7px;
+    color: #6d6555;
 }
 
-input {
-    width: 100%;
+.progress-box {
+    height: 38px;
 
-    padding: 15px;
+    background: #e5ddc4;
+
+    border: 3px solid #111;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    margin: 28px 0 15px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffd43b,
+            #ff9f00
+        );
+
+    transition: width 0.5s ease;
+}
+
+.people {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.elon {
+    margin-top: 35px;
+
+    font-size: clamp(35px, 6vw, 65px);
+
+    line-height: 0.95;
+
+    font-weight: 1000;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+}
+
+.elon span {
+    display: block;
+
+    background: #ffd43b;
 
     border: 3px solid #111;
 
     border-radius: 12px;
 
-    background: white;
+    padding: 8px 15px;
 
-    color: #111;
+    width: fit-content;
 
-    font-size: 17px;
+    margin: 15px auto 0;
 
-    outline: none;
+    transform: rotate(-2deg);
 }
 
-input:focus {
-    box-shadow: 4px 4px 0 #ffd43b;
-}
+.give-button {
+    display: inline-block;
 
-button {
-    width: 100%;
+    margin-top: 35px;
 
-    margin-top: 25px;
-
-    padding: 16px;
-
-    border: 3px solid #111;
-
-    border-radius: 14px;
+    padding: 19px 32px;
 
     background: #111;
 
     color: white;
 
-    font-size: 18px;
+    text-decoration: none;
+
+    border-radius: 17px;
+
+    font-size: 24px;
 
     font-weight: 1000;
 
-    cursor: pointer;
-}
-
-button:hover {
-    transform: translateY(-1px);
-}
-
-button:disabled {
-    opacity: 0.6;
-
-    cursor: wait;
-
-    transform: none;
-}
-
-
-/* =====================================================
-   MESSAGES
-   ===================================================== */
-
-.message {
-    display: none;
-
-    margin-top: 18px;
-
-    padding: 13px;
-
-    border-radius: 10px;
-
-    font-weight: 800;
-
-    line-height: 1.4;
-}
-
-.error {
-    background: #ffd5d5;
-
-    border: 2px solid #b00000;
-
-    color: #8b0000;
-}
-
-.success {
-    background: #d8ffd8;
-
-    border: 2px solid #087508;
-
-    color: #075d07;
-}
-
-
-/* =====================================================
-   ADMIN PANEL
-   ===================================================== */
-
-#adminPanel {
-    display: none;
-}
-
-.admin-box {
-    background: white;
-
     border: 3px solid #111;
 
-    border-radius: 18px;
+    box-shadow: 7px 7px 0 #ff9f00;
 
-    padding: 22px;
+    transition: 0.15s;
+}
 
+.give-button:hover {
+    transform: translate(4px, 4px);
+
+    box-shadow:
+        3px 3px 0 #ff9f00;
+}
+
+.note {
     margin-top: 20px;
+
+    font-size: 14px;
+
+    color: #756d5c;
+
+    font-weight: 700;
 }
 
-.admin-box h2 {
-    font-size: 24px;
+footer {
+    border-top: 3px solid #111;
 
-    margin-bottom: 12px;
+    margin-top: 40px;
+
+    padding: 40px 0 60px;
+
+    text-align: center;
+
+    color: #756d5c;
+
+    font-weight: 700;
 }
-
-.user-email {
-    font-weight: 900;
-
-    word-break: break-word;
-}
-
-.roles {
-    margin-top: 8px;
-
-    color: #6d6555;
-
-    font-weight: 800;
-}
-
-.logout-button {
-    background: white;
-
-    color: #111;
-}
-
-
-/* =====================================================
-   MOBILE
-   ===================================================== */
 
 @media (max-width: 700px) {
 
-    .card {
-        margin: 45px auto;
-
-        padding: 30px 20px;
-
-        box-shadow: 7px 7px 0 #111;
+    h1 {
+        letter-spacing: -3px;
     }
 
-    .card h1 {
+    .main-card {
+        padding: 30px 17px;
+
+        box-shadow:
+            7px 7px 0 #111;
+    }
+
+    .doge {
+        width: 220px;
+        height: 220px;
+    }
+
+    .counter {
         letter-spacing: -3px;
     }
 
@@ -301,736 +323,277 @@ button:disabled {
 </style>
 </head>
 
-
 <body>
 
 <div class="container">
 
+    <nav>
 
-<!-- =====================================================
-     NAVIGATION
-     ===================================================== -->
-
-<nav>
-
-    <div class="logo">
-        🐕 GIVE ME $1
-    </div>
-
-    <a
-        href="/"
-        class="site-button"
-    >
-        ← SITE
-    </a>
-
-</nav>
-
-
-
-<!-- =====================================================
-     LOGIN
-     ===================================================== -->
-
-<section
-    id="loginPanel"
-    class="card"
->
-
-    <h1>
-        ADMIN
-    </h1>
-
-    <p class="subtitle">
-        This area is restricted to the administrator.
-        Log in with your administrator account.
-    </p>
-
-
-    <form id="loginForm">
-
-        <label for="email">
-            Email
-        </label>
-
-        <input
-            id="email"
-            type="email"
-            autocomplete="username"
-            placeholder="your@email.com"
-            required
-        >
-
-
-        <label for="password">
-            Password
-        </label>
-
-        <input
-            id="password"
-            type="password"
-            autocomplete="current-password"
-            placeholder="Your password"
-            required
-        >
-
-
-        <button
-            id="loginButton"
-            type="submit"
-        >
-            LOGIN
-        </button>
-
-
-        <div
-            id="loginError"
-            class="message error"
-        ></div>
-
-
-        <div
-            id="loginSuccess"
-            class="message success"
-        ></div>
-
-    </form>
-
-</section>
-
-
-
-<!-- =====================================================
-     ADMIN PANEL
-     ===================================================== -->
-
-<section
-    id="adminPanel"
-    class="card"
->
-
-    <h1>
-        ADMIN
-    </h1>
-
-    <p class="subtitle">
-        Welcome to the Give Me One Dollar administrator panel.
-    </p>
-
-
-    <div class="admin-box">
-
-        <h2>
-            Account
-        </h2>
-
-        <div
-            id="userEmail"
-            class="user-email"
-        >
-            —
+        <div class="logo">
+            🐕 GIVE ME $1
         </div>
 
-        <div
-            id="userRoles"
-            class="roles"
+        <a
+            href="#give"
+            class="nav-button"
         >
-            —
-        </div>
+            GIVE ME $1
+        </a>
 
-    </div>
+    </nav>
 
+    <section class="hero">
 
-    <div class="admin-box">
+        <h1 id="headline">
+            SEVEN BILLION PEOPLE GIVE ME ONE DOLLAR.
+        </h1>
 
-        <h2>
-            Site controls
-        </h2>
-
-        <p>
-            You are authenticated as an administrator.
-            Design, images, counters and other controls
-            can be added here.
+        <p
+            class="subheadline"
+            id="subheadline"
+        >
+            $1 × 7,000,000,000 = $7,000,000,000
         </p>
 
-    </div>
+        <div class="main-card">
 
+            <img
+                class="doge"
+                id="dogImage"
+                src="/images/uploads/doge.jpg"
+                alt="Doge"
+            >
 
-    <button
-        id="logoutButton"
-        class="logout-button"
-        type="button"
-    >
-        LOG OUT
-    </button>
+            <div class="counter-label">
+                CURRENTLY RAISED
+            </div>
 
-</section>
+            <div
+                class="counter"
+                id="amount"
+            >
+                $0
+            </div>
 
+            <div
+                class="target"
+                id="targetText"
+            >
+                TARGET: $7,000,000,000
+            </div>
+
+            <div class="progress-box">
+
+                <div
+                    class="progress"
+                    id="progress"
+                ></div>
+
+            </div>
+
+            <div
+                class="people"
+                id="people"
+            >
+                0 PEOPLE
+            </div>
+
+            <div class="elon">
+
+                <span id="elonText">
+                    LET'S BEAT ELON MUSK.
+                </span>
+
+            </div>
+
+            <div id="give">
+
+                <a
+                    href="#"
+                    class="give-button"
+                    id="paymentButton"
+                >
+                    GIVE ME $1 →
+                </a>
+
+            </div>
+
+            <div
+                class="note"
+                id="note"
+            >
+                One dollar. That's all.
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <strong>
+            GIVE ME ONE DOLLAR.
+        </strong>
+
+        <br><br>
+
+        🐕 $1 → $7,000,000,000
+
+        <br><br>
+
+        <small>
+            Doge image:
+            Wikimedia Commons / CC0
+        </small>
+
+    </footer>
 
 </div>
 
-
-
-<script type="module">
+<script>
 
 /*
-=====================================================
-NETLIFY IDENTITY — CURRENT API
-=====================================================
+====================================================
+CMS CONTENT
+====================================================
 
-Uses:
+The editable content is stored in:
 
-@netlify/identity
+content/homepage.yml
 
-This is the current Netlify Identity approach
-for new projects.
+Decap CMS edits that file.
 
-We intentionally do NOT use:
-
-- Netlify Identity Widget
-- gotrue-js
-- legacy widget code
-=====================================================
+Netlify then deploys the new version.
+====================================================
 */
 
-
-import {
-    login,
-    logout,
-    getUser,
-    handleAuthCallback
-} from "https://cdn.jsdelivr.net/npm/@netlify/identity/+esm";
-
-
-
-/* =====================================================
-   ELEMENTS
-   ===================================================== */
-
-const loginPanel =
-    document.getElementById(
-        "loginPanel"
-    );
-
-
-const adminPanel =
-    document.getElementById(
-        "adminPanel"
-    );
-
-
-const loginForm =
-    document.getElementById(
-        "loginForm"
-    );
-
-
-const loginButton =
-    document.getElementById(
-        "loginButton"
-    );
-
-
-const emailInput =
-    document.getElementById(
-        "email"
-    );
-
-
-const passwordInput =
-    document.getElementById(
-        "password"
-    );
-
-
-const loginError =
-    document.getElementById(
-        "loginError"
-    );
-
-
-const loginSuccess =
-    document.getElementById(
-        "loginSuccess"
-    );
-
-
-const userEmail =
-    document.getElementById(
-        "userEmail"
-    );
-
-
-const userRoles =
-    document.getElementById(
-        "userRoles"
-    );
-
-
-const logoutButton =
-    document.getElementById(
-        "logoutButton"
-    );
-
-
-
-/* =====================================================
-   MESSAGES
-   ===================================================== */
-
-function showError(message) {
-
-    loginError.textContent =
-        message;
-
-    loginError.style.display =
-        "block";
-
-}
-
-
-function showSuccess(message) {
-
-    loginSuccess.textContent =
-        message;
-
-    loginSuccess.style.display =
-        "block";
-
-}
-
-
-function clearMessages() {
-
-    loginError.textContent =
-        "";
-
-    loginSuccess.textContent =
-        "";
-
-    loginError.style.display =
-        "none";
-
-    loginSuccess.style.display =
-        "none";
-
-}
-
-
-
-/* =====================================================
-   SHOW LOGIN
-   ===================================================== */
-
-function showLogin() {
-
-    loginPanel.style.display =
-        "block";
-
-    adminPanel.style.display =
-        "none";
-
-}
-
-
-
-/* =====================================================
-   SHOW ADMIN
-   ===================================================== */
-
-function showAdmin(user) {
-
-    loginPanel.style.display =
-        "none";
-
-    adminPanel.style.display =
-        "block";
-
-
-    userEmail.textContent =
-        user.email || "Unknown";
-
-
-    const roles =
-        Array.isArray(user.roles)
-            ? user.roles
-            : [];
-
-
-    userRoles.textContent =
-        roles.length
-            ? "Roles: " + roles.join(", ")
-            : "Roles: none";
-
-}
-
-
-
-/* =====================================================
-   CHECK ADMIN
-   ===================================================== */
-
-async function checkCurrentUser() {
+async function loadSiteContent() {
 
     try {
 
-        const user =
-            await getUser();
+        const response = await fetch(
+            "/content/homepage.yml",
+            {
+                cache: "no-store"
+            }
+        );
 
+        if (!response.ok) {
+            throw new Error(
+                "Could not load homepage content."
+            );
+        }
+
+        const text = await response.text();
+
+        const content = parseSimpleYaml(text);
 
         /*
-         * Nobody is logged in.
+         * HEADLINE
          */
 
-        if (!user) {
+        if (content.headline) {
 
-            showLogin();
-
-            return;
+            document.getElementById(
+                "headline"
+            ).textContent =
+                content.headline;
 
         }
 
-
-        console.log(
-            "Netlify Identity user:",
-            user
-        );
-
-
-        const roles =
-            Array.isArray(user.roles)
-                ? user.roles
-                : [];
-
-
         /*
-         * User is authenticated but
-         * doesn't have admin role.
+         * SUBHEADLINE
          */
 
-        if (
-            !roles.includes("admin")
-        ) {
+        if (content.subheadline) {
 
-            await logout();
-
-
-            showLogin();
-
-
-            showError(
-                "This account is authenticated, but it does not have the administrator role."
-            );
-
-
-            return;
+            document.getElementById(
+                "subheadline"
+            ).textContent =
+                content.subheadline;
 
         }
 
-
         /*
-         * User is authenticated
-         * AND is an administrator.
+         * DOG IMAGE
          */
 
-        showAdmin(user);
+        if (content.dog_image) {
 
-    } catch (error) {
-
-        console.error(
-            "Identity check failed:",
-            error
-        );
-
-
-        showLogin();
-
-
-        showError(
-            "Unable to verify your administrator account."
-        );
-
-    }
-
-}
-
-
-
-/* =====================================================
-   LOGIN
-   ===================================================== */
-
-loginForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-
-        clearMessages();
-
-
-        const email =
-            emailInput.value.trim();
-
-
-        const password =
-            passwordInput.value;
-
-
-        if (
-            !email ||
-            !password
-        ) {
-
-            showError(
-                "Enter your email and password."
-            );
-
-            return;
+            document.getElementById(
+                "dogImage"
+            ).src =
+                content.dog_image;
 
         }
 
+        /*
+         * TARGET
+         */
 
-        loginButton.disabled =
-            true;
+        if (content.target) {
 
-
-        loginButton.textContent =
-            "LOGGING IN...";
-
-
-        try {
-
-            /*
-             * CURRENT NETLIFY IDENTITY LOGIN
-             */
-
-            const user =
-                await login(
-                    email,
-                    password
-                );
-
-
-            console.log(
-                "Login successful:",
-                user
-            );
-
-
-            /*
-             * Check admin role.
-             */
-
-            const roles =
-                Array.isArray(user.roles)
-                    ? user.roles
-                    : [];
-
+            const target =
+                Number(content.target);
 
             if (
-                !roles.includes("admin")
+                Number.isFinite(target) &&
+                target > 0
             ) {
 
-                /*
-                 * Authentication worked,
-                 * but authorization failed.
-                 */
-
-                await logout();
-
-
-                throw new Error(
-                    "Login worked, but this account does not have the admin role."
-                );
+                window.siteTarget =
+                    target;
 
             }
 
-
-            showSuccess(
-                "Login successful."
-            );
-
-
-            /*
-             * Small delay only for visual feedback.
-             */
-
-            setTimeout(
-                function() {
-
-                    showAdmin(user);
-
-                },
-                300
-            );
-
-
-        } catch (error) {
-
-            console.error(
-                "Netlify Identity login error:",
-                error
-            );
-
-
-            /*
-             * Show the actual Netlify error
-             * instead of hiding it behind
-             * a generic message.
-             */
-
-            showError(
-                error?.message ||
-                "Login failed. Please check your email and password."
-            );
-
-
-            loginButton.disabled =
-                false;
-
-
-            loginButton.textContent =
-                "LOGIN";
-
         }
-
-    }
-);
-
-
-
-/* =====================================================
-   LOGOUT
-   ===================================================== */
-
-logoutButton.addEventListener(
-    "click",
-    async function() {
-
-        logoutButton.disabled =
-            true;
-
-
-        logoutButton.textContent =
-            "LOGGING OUT...";
-
-
-        try {
-
-            await logout();
-
-            window.location.reload();
-
-        } catch (error) {
-
-            console.error(
-                "Logout failed:",
-                error
-            );
-
-
-            logoutButton.disabled =
-                false;
-
-
-            logoutButton.textContent =
-                "LOG OUT";
-
-        }
-
-    }
-);
-
-
-
-/* =====================================================
-   HANDLE NETLIFY CALLBACK
-   =====================================================
-
-   This allows Netlify Identity to process:
-
-   - invite_token
-   - recovery_token
-   - confirmation_token
-   - OAuth callbacks
-
-   IMPORTANT:
-   The invite/password setup happens through
-   handleAuthCallback().
-
-   Once the account is activated, normal
-   administrator login uses login().
-===================================================== */
-
-async function processAuthCallback() {
-
-    /*
-     * If there is no hash in the URL,
-     * there is nothing to process.
-     */
-
-    if (
-        !window.location.hash
-    ) {
-
-        await checkCurrentUser();
-
-        return;
-
-    }
-
-
-    try {
-
-        const result =
-            await handleAuthCallback();
-
-
-        console.log(
-            "Identity callback:",
-            result
-        );
-
 
         /*
-         * If Netlify completed an authentication
-         * callback successfully, check the session.
+         * ELON TEXT
          */
 
-        if (result) {
+        if (content.elon_text) {
 
-            /*
-             * Remove authentication token
-             * from the visible URL.
-             */
-
-            window.history.replaceState(
-                {},
-                document.title,
-                window.location.pathname
-            );
+            document.getElementById(
+                "elonText"
+            ).textContent =
+                content.elon_text;
 
         }
 
+        /*
+         * BUTTON TEXT
+         */
 
-        await checkCurrentUser();
+        if (content.button_text) {
+
+            document.getElementById(
+                "paymentButton"
+            ).textContent =
+                content.button_text;
+
+        }
+
+        /*
+         * NOTE
+         */
+
+        if (content.note) {
+
+            document.getElementById(
+                "note"
+            ).textContent =
+                content.note;
+
+        }
+
+        updateCounter();
 
     } catch (error) {
 
         console.error(
-            "Identity callback failed:",
+            "CMS content error:",
             error
-        );
-
-
-        showLogin();
-
-
-        showError(
-            error?.message ||
-            "Authentication callback failed. Please request a new link if necessary."
         );
 
     }
@@ -1038,15 +601,254 @@ async function processAuthCallback() {
 }
 
 
+/*
+====================================================
+SIMPLE YAML READER
+====================================================
 
-/* =====================================================
-   START
-   ===================================================== */
+Our homepage.yml contains simple
+key/value fields, so we don't need
+a large JavaScript framework.
+====================================================
+*/
 
-processAuthCallback();
+function parseSimpleYaml(text) {
+
+    const result = {};
+
+    const lines =
+        text.split(/\r?\n/);
+
+    for (
+        const line of lines
+    ) {
+
+        const trimmed =
+            line.trim();
+
+        if (
+            !trimmed ||
+            trimmed.startsWith("#")
+        ) {
+            continue;
+        }
+
+        const separator =
+            trimmed.indexOf(":");
+
+        if (
+            separator === -1
+        ) {
+            continue;
+        }
+
+        const key =
+            trimmed
+                .slice(0, separator)
+                .trim();
+
+        let value =
+            trimmed
+                .slice(separator + 1)
+                .trim();
+
+        if (
+            (
+                value.startsWith('"') &&
+                value.endsWith('"')
+            ) ||
+            (
+                value.startsWith("'") &&
+                value.endsWith("'")
+            )
+        ) {
+
+            value =
+                value.slice(1, -1);
+
+        }
+
+        result[key] =
+            value;
+
+    }
+
+    return result;
+
+}
+
+
+/*
+====================================================
+STRIPE
+====================================================
+*/
+
+const STRIPE_LINK =
+    "https://buy.stripe.com/14A9AL1PScxdfUx8N6ao800";
+
+
+document
+    .getElementById("paymentButton")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            if (
+                STRIPE_LINK === ""
+            ) {
+
+                alert(
+                    "Payment is being connected. Please check back soon!"
+                );
+
+                return;
+
+            }
+
+            window.location.href =
+                STRIPE_LINK;
+
+        }
+    );
+
+
+/*
+====================================================
+LIVE COUNTER
+====================================================
+*/
+
+let currentAmount = 0;
+let currentPeople = 0;
+
+window.siteTarget =
+    7000000000;
+
+
+async function loadCounter() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/.netlify/functions/counter",
+                {
+                    cache: "no-store"
+                }
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Counter request failed."
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        currentAmount =
+            Number(
+                data.amount || 0
+            );
+
+        currentPeople =
+            Number(
+                data.people || 0
+            );
+
+        updateCounter();
+
+    } catch (error) {
+
+        console.error(
+            "Counter error:",
+            error
+        );
+
+    }
+
+}
+
+
+function updateCounter() {
+
+    document.getElementById(
+        "amount"
+    ).textContent =
+        "$" +
+        currentAmount.toLocaleString(
+            "en-US"
+        );
+
+
+    document.getElementById(
+        "people"
+    ).textContent =
+        currentPeople.toLocaleString(
+            "en-US"
+        ) +
+        " PEOPLE";
+
+
+    const target =
+        Number(
+            window.siteTarget ||
+            7000000000
+        );
+
+
+    const percentage =
+        (
+            currentAmount /
+            target
+        ) *
+        100;
+
+
+    document.getElementById(
+        "progress"
+    ).style.width =
+        Math.min(
+            Math.max(
+                percentage,
+                0
+            ),
+            100
+        ) + "%";
+
+
+    document.getElementById(
+        "targetText"
+    ).textContent =
+        "TARGET: $" +
+        target.toLocaleString(
+            "en-US"
+        );
+
+}
+
+
+/*
+====================================================
+START
+====================================================
+*/
+
+loadSiteContent();
+
+loadCounter();
+
+setInterval(
+    loadCounter,
+    15000
+);
 
 </script>
 
 </body>
 </html>
-```
