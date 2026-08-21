@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Give Me One Dollar</title>
+
+<meta name="description"
+content="Seven billion people give me one dollar. Let's beat Elon Musk.">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff6d5;
+    color: #111;
+    overflow-x: hidden;
+}
+
+/* Background */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.09;
+
+    background-image:
+        radial-gradient(#111 1px, transparent 1px);
+
+    background-size: 24px 24px;
+}
+
+/* Container */
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+/* Navigation */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+}
+
+.nav-button {
+    color: #111;
+    background: white;
+    text-decoration: none;
+
+    border: 3px solid #111;
+    border-radius: 999px;
+
+    padding: 10px 17px;
+
+    font-weight: 900;
+}
+
+/* Hero */
+
+.hero {
+    text-align: center;
+    padding: 45px 0 70px;
+}
+
+h1 {
+    font-size: clamp(48px, 9vw, 105px);
+    line-height: 0.88;
+    letter-spacing: -6px;
+
+    text-transform: uppercase;
+
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+.subheadline {
+    font-size: clamp(21px, 3vw, 30px);
+    font-weight: 800;
+
+    margin: 25px auto 40px;
+
+    max-width: 800px;
+}
+
+/* Main Card */
+
+.main-card {
+    max-width: 950px;
+
+    margin: auto;
+
+    background: #fffdf3;
+
+    border: 4px solid #111;
+    border-radius: 40px;
+
+    padding: 40px 30px;
+
+    box-shadow: 12px 12px 0 #111;
+}
+
+/* Doge */
+
+.doge {
+    width: 310px;
+    height: 310px;
+
+    object-fit: cover;
+
+    display: block;
+
+    margin: 0 auto 35px;
+
+    border-radius: 50%;
+
+    border: 6px solid #111;
+
+    box-shadow: 9px 9px 0 #111;
+
+    animation: floatDoge 3s ease-in-out infinite;
+}
+
+@keyframes floatDoge {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Counter */
+
+.counter-label {
+    font-size: 20px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    color: #6d6555;
+}
+
+.counter {
+    font-size: clamp(48px, 9vw, 92px);
+
+    font-weight: 1000;
+
+    letter-spacing: -6px;
+
+    line-height: 1;
+
+    margin: 8px 0;
+}
+
+.target {
+    font-size: 20px;
+    font-weight: 900;
+
+    color: #6d6555;
+}
+
+/* Progress */
+
+.progress-box {
+    height: 38px;
+
+    background: #e5ddc4;
+
+    border: 3px solid #111;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    margin: 28px 0 15px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffd43b,
+            #ff9f00
+        );
+
+    transition: width 0.5s ease;
+}
+
+/* People */
+
+.people {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+/* Elon */
+
+.elon {
+    margin-top: 35px;
+
+    font-size: clamp(35px, 6vw, 65px);
+
+    line-height: 0.95;
+
+    font-weight: 1000;
+
+    letter-spacing: -3px;
+
+    text-transform: uppercase;
+}
+
+.elon span {
+    display: block;
+
+    background: #ffd43b;
+
+    border: 3px solid #111;
+
+    border-radius: 12px;
+
+    padding: 8px 15px;
+
+    width: fit-content;
+
+    margin: 15px auto 0;
+
+    transform: rotate(-2deg);
+}
+
+/* Button */
+
+.give-button {
+
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding: 19px 32px;
+
+    background: #111;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 17px;
+
+    font-size: 24px;
+
+    font-weight: 1000;
+
+    border: 3px solid #111;
+
+    box-shadow: 7px 7px 0 #ff9f00;
+
+    transition: 0.15s;
+}
+
+.give-button:hover {
+
+    transform:
+        translate(4px, 4px);
+
+    box-shadow:
+        3px 3px 0 #ff9f00;
+}
+
+/* Small text */
+
+.note {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    color: #756d5c;
+
+    font-weight: 700;
+}
+
+/* Footer */
+
+footer {
+
+    border-top: 3px solid #111;
+
+    margin-top: 40px;
+
+    padding: 40px 0 60px;
+
+    text-align: center;
+
+    color: #756d5c;
+
+    font-weight: 700;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    .main-card {
+        padding: 30px 17px;
+
+        box-shadow:
+            7px 7px 0 #111;
+    }
+
+    .doge {
+        width: 220px;
+        height: 220px;
+    }
+
+    .counter {
+        letter-spacing: -3px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        🐕 GIVE ME $1
+    </div>
+
+    <a
+        href="#give"
+        class="nav-button"
+    >
+        GIVE ME $1
+    </a>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+    <h1>
+
+        SEVEN BILLION
+        PEOPLE GIVE ME
+        ONE DOLLAR.
+
+    </h1>
+
+
+    <p class="subheadline">
+
+        $1 × 7,000,000,000 =
+        $7,000,000,000
+
+    </p>
+
+
+
+    <!-- MAIN -->
+
+    <div class="main-card">
+
+
+        <!-- DOGE -->
+
+        <img
+
+            class="doge"
+
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kabosu_and_Atsuko_Sato_2023-11-02_(1).jpg"
+
+            alt="Kabosu, the original Doge meme dog"
+
+        >
+
+
+
+        <!-- COUNTER -->
+
+        <div class="counter-label">
+
+            CURRENTLY RAISED
+
+        </div>
+
+
+        <div
+            class="counter"
+            id="amount"
+        >
+
+            $0
+
+        </div>
+
+
+        <div class="target">
+
+            TARGET:
+            $7,000,000,000
+
+        </div>
+
+
+
+        <!-- PROGRESS -->
+
+        <div class="progress-box">
+
+            <div
+                class="progress"
+                id="progress"
+            ></div>
+
+        </div>
+
+
+
+        <div
+            class="people"
+            id="people"
+        >
+
+            0 PEOPLE
+
+        </div>
+
+
+
+        <!-- ELON -->
+
+        <div class="elon">
+
+            LET'S BEAT
+
+            <span>
+
+                ELON MUSK.
+
+            </span>
+
+        </div>
+
+
+
+        <!-- CTA -->
+
+        <div id="give">
+
+            <a
+
+                href="#"
+
+                class="give-button"
+
+                id="paymentButton"
+
+            >
+
+                GIVE ME $1 →
+
+            </a>
+
+        </div>
+
+
+        <div class="note">
+
+            One dollar.
+            That's all.
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<footer>
+
+    <strong>
+        GIVE ME ONE DOLLAR.
+    </strong>
+
+    <br><br>
+
+    🐕 $1 → $7,000,000,000
+
+    <br><br>
+
+    <small>
+        Doge image:
+        Wikimedia Commons / CC0
+    </small>
+
+</footer>
+
+
+</div>
+
+
+
+<script>
+
+/*
+====================================================
+STRIPE PAYMENT LINK
+====================================================
+
+When you create your Stripe Payment Link,
+replace the text below with your real link.
+
+Example:
+
+const STRIPE_LINK =
+"https://buy.stripe.com/xxxxxxxx";
+
+====================================================
+*/
+
+const STRIPE_LINK = "https://buy.stripe.com/14A9AL1PScxdfUx8N6ao800";
+
+
+
+document
+    .getElementById("paymentButton")
+    .addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        if (STRIPE_LINK === "") {
+
+            alert(
+                "Payment is being connected. Please check back soon!"
+            );
+
+            return;
+
+        }
+
+        window.location.href = STRIPE_LINK;
+
+    });
+
+
+
+/*
+====================================================
+DEMO COUNTER
+
+This is only a visual demo for now.
+
+Later we will connect this to
+the real Stripe payment data/database.
+====================================================
+*/
+
+let amount = 0;
+let people = 0;
+
+
+
+function updateCounter() {
+
+    document.getElementById(
+        "amount"
+    ).textContent =
+
+        "$" +
+
+        amount.toLocaleString(
+            "en-US"
+        );
+
+
+    document.getElementById(
+        "people"
+    ).textContent =
+
+        people.toLocaleString(
+            "en-US"
+        ) +
+
+        " PEOPLE";
+
+
+    const percentage =
+
+        (amount / 7000000000) * 100;
+
+
+    document.getElementById(
+        "progress"
+    ).style.width =
+
+        Math.min(
+            percentage,
+            100
+        ) + "%";
+
+}
+
+
+updateCounter();
+
+</script>
+
+
+</body>
+</html>
