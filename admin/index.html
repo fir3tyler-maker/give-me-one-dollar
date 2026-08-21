@@ -1,13 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Give Me One Dollar — Admin</title>
-
-  <!-- Netlify Identity -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <style>
     * {
@@ -17,14 +14,14 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       background: #101010;
-      color: #fff;
+      color: white;
     }
 
     .container {
       width: min(900px, calc(100% - 32px));
-      margin: 0 auto;
+      margin: auto;
       padding: 40px 0;
     }
 
@@ -48,18 +45,13 @@
       margin-top: 0;
     }
 
-    h2 {
-      margin-top: 0;
-    }
-
     .muted {
       color: #aaa;
     }
 
     label {
       display: block;
-      margin-top: 20px;
-      margin-bottom: 8px;
+      margin: 20px 0 8px;
       font-weight: bold;
     }
 
@@ -70,14 +62,8 @@
       border-radius: 10px;
       border: 1px solid #444;
       background: #0c0c0c;
-      color: #fff;
+      color: white;
       font-size: 16px;
-      outline: none;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: #888;
     }
 
     textarea {
@@ -95,178 +81,120 @@
     }
 
     .primary {
-      background: #fff;
+      background: white;
       color: #111;
     }
 
     .secondary {
       background: #333;
-      color: #fff;
-      margin-left: 8px;
+      color: white;
     }
 
     .danger {
       background: #8b2222;
-      color: #fff;
+      color: white;
+    }
+
+    #admin {
+      display: none;
+    }
+
+    #denied {
+      display: none;
+    }
+
+    #loading {
+      display: flex;
     }
 
     .status {
       margin-top: 15px;
-      min-height: 22px;
       color: #8cff9a;
-    }
-
-    .error {
-      color: #ff7777;
-    }
-
-    #login-screen {
-      display: flex;
-    }
-
-    #admin-screen {
-      display: none;
-    }
-
-    #loading-screen {
-      display: none;
-    }
-
-    #denied-screen {
-      display: none;
-    }
-
-    .small {
-      font-size: 14px;
-      color: #888;
-      margin-top: 18px;
-    }
-
-    .preview {
-      border: 1px solid #333;
-      border-radius: 14px;
-      padding: 22px;
-      margin-top: 20px;
-      background: #111;
-    }
-
-    .preview-image {
-      width: 100%;
-      max-height: 400px;
-      object-fit: contain;
-      border-radius: 12px;
-      margin-top: 15px;
-      display: none;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Loading -->
-  <section id="loading-screen" class="center">
+  <div id="loading" class="center">
     <div>
       <h1>Loading...</h1>
-      <p class="muted">Checking administrator access.</p>
+      <p class="muted">Checking authentication.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- Login -->
-  <section id="login-screen" class="center">
-    <div class="card" style="width:min(500px,calc(100% - 32px));">
+  <div id="login" class="center" style="display:none;">
+    <div class="card">
       <h1>🔐 Admin Panel</h1>
-
       <p class="muted">
-        This area is restricted to the website administrator.
+        This area is restricted to the administrator.
       </p>
 
-      <button class="primary" onclick="openLogin()">
+      <button class="primary" id="loginButton">
         Log in
       </button>
-
-      <p class="small">
-        If you received an invitation, use the same email address.
-      </p>
     </div>
-  </section>
+  </div>
 
-  <!-- Access denied -->
-  <section id="denied-screen" class="center">
-    <div class="card" style="width:min(500px,calc(100% - 32px));">
+  <div id="denied" class="center">
+    <div class="card">
       <h1>⛔ Access denied</h1>
-
       <p class="muted">
-        Your account does not have administrator access.
+        Your account does not have the admin role.
       </p>
 
-      <button class="secondary" onclick="logout()">
+      <button class="secondary" id="logoutDenied">
         Log out
       </button>
     </div>
-  </section>
+  </div>
 
-  <!-- Admin -->
-  <section id="admin-screen">
+  <div id="admin">
 
     <div class="container">
 
       <div class="card">
-
-        <h1>Give Me One Dollar</h1>
+        <h1>Give Me One Dollar — Admin</h1>
 
         <p class="muted">
-          Website administrator
+          You are logged in as the website administrator.
         </p>
 
-        <button class="danger" onclick="logout()">
+        <button class="danger" id="logoutButton">
           Log out
         </button>
-
       </div>
 
       <div class="card">
 
         <h2>Website content</h2>
 
-        <label for="title">
-          Main title
-        </label>
+        <label for="title">Main title</label>
 
         <input
           id="title"
-          type="text"
           value="Seven billion people give me one dollar"
         >
 
-        <label for="headline">
-          Main headline
-        </label>
+        <label for="headline">Main headline</label>
 
         <input
           id="headline"
-          type="text"
           value="LET'S BEAT ELON MUSK"
         >
 
-        <label for="button">
-          Payment button
-        </label>
+        <label for="button">Payment button</label>
 
         <input
           id="button"
-          type="text"
           value="GIVE ME ONE DOLLAR"
         >
 
-        <label for="description">
-          Description
-        </label>
+        <label for="description">Description</label>
 
         <textarea id="description">Seven billion people. One dollar each.</textarea>
 
-        <label for="doge">
-          Doge image URL
-        </label>
+        <label for="doge">Doge image URL</label>
 
         <input
           id="doge"
@@ -274,89 +202,50 @@
           placeholder="https://example.com/doge.jpg"
         >
 
-        <div>
+        <br><br>
 
-          <button
-            class="primary"
-            style="margin-top:20px;"
-            onclick="saveSettings()"
-          >
-            Save Changes
-          </button>
-
-        </div>
+        <button class="primary" id="saveButton">
+          Save Changes
+        </button>
 
         <div id="status" class="status"></div>
 
       </div>
 
-      <!-- Preview -->
-
-      <div class="card">
-
-        <h2>Preview</h2>
-
-        <div class="preview">
-
-          <h1 id="preview-title">
-            Seven billion people give me one dollar
-          </h1>
-
-          <h2 id="preview-headline">
-            LET'S BEAT ELON MUSK
-          </h2>
-
-          <p id="preview-description">
-            Seven billion people. One dollar each.
-          </p>
-
-          <button class="primary" id="preview-button">
-            GIVE ME ONE DOLLAR
-          </button>
-
-          <img
-            id="preview-image"
-            class="preview-image"
-            alt="Doge preview"
-          >
-
-        </div>
-
-      </div>
-
     </div>
 
-  </section>
+  </div>
 
 
-  <script>
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <script type="module">
+
+    import {
+      getUser,
+      login,
+      logout,
+      handleAuthCallback
+    } from "https://cdn.jsdelivr.net/npm/@netlify/identity/+esm";
+
+
+    const loading =
+      document.getElementById("loading");
 
     const loginScreen =
-      document.getElementById("login-screen");
-
-    const loadingScreen =
-      document.getElementById("loading-screen");
+      document.getElementById("login");
 
     const adminScreen =
-      document.getElementById("admin-screen");
+      document.getElementById("admin");
 
     const deniedScreen =
-      document.getElementById("denied-screen");
-
-
-    function showLoading() {
-
-      loadingScreen.style.display = "flex";
-      loginScreen.style.display = "none";
-      adminScreen.style.display = "none";
-      deniedScreen.style.display = "none";
-
-    }
+      document.getElementById("denied");
 
 
     function showLogin() {
 
-      loadingScreen.style.display = "none";
+      loading.style.display = "none";
       loginScreen.style.display = "flex";
       adminScreen.style.display = "none";
       deniedScreen.style.display = "none";
@@ -366,19 +255,17 @@
 
     function showAdmin() {
 
-      loadingScreen.style.display = "none";
+      loading.style.display = "none";
       loginScreen.style.display = "none";
       adminScreen.style.display = "block";
       deniedScreen.style.display = "none";
-
-      loadSettings();
 
     }
 
 
     function showDenied() {
 
-      loadingScreen.style.display = "none";
+      loading.style.display = "none";
       loginScreen.style.display = "none";
       adminScreen.style.display = "none";
       deniedScreen.style.display = "flex";
@@ -386,291 +273,158 @@
     }
 
 
-    function openLogin() {
+    function checkAdmin(user) {
 
-      if (!window.netlifyIdentity) {
+      if (!user) {
 
-        alert(
-          "Netlify Identity is not available."
-        );
-
+        showLogin();
         return;
 
       }
 
-      window.netlifyIdentity.open();
 
-    }
-
-
-    function logout() {
-
-      if (window.netlifyIdentity) {
-
-        window.netlifyIdentity.logout();
-
-      }
-
-    }
+      const roles =
+        user.roles || [];
 
 
-    function updatePreview() {
+      if (roles.includes("admin")) {
 
-      document.getElementById(
-        "preview-title"
-      ).textContent =
-        document.getElementById("title").value;
-
-
-      document.getElementById(
-        "preview-headline"
-      ).textContent =
-        document.getElementById("headline").value;
-
-
-      document.getElementById(
-        "preview-description"
-      ).textContent =
-        document.getElementById("description").value;
-
-
-      document.getElementById(
-        "preview-button"
-      ).textContent =
-        document.getElementById("button").value;
-
-
-      const image =
-        document.getElementById("preview-image");
-
-      const imageUrl =
-        document.getElementById("doge").value.trim();
-
-
-      if (imageUrl) {
-
-        image.src = imageUrl;
-        image.style.display = "block";
+        showAdmin();
 
       } else {
 
-        image.removeAttribute("src");
-        image.style.display = "none";
+        showDenied();
 
       }
-
-    }
-
-
-    function saveSettings() {
-
-      const settings = {
-
-        title:
-          document.getElementById("title").value,
-
-        headline:
-          document.getElementById("headline").value,
-
-        button:
-          document.getElementById("button").value,
-
-        description:
-          document.getElementById("description").value,
-
-        doge:
-          document.getElementById("doge").value
-
-      };
-
-
-      /*
-       * Temporary local save.
-       *
-       * Next step:
-       * connect this to Netlify Blobs
-       * so changes become public.
-       */
-
-      localStorage.setItem(
-        "siteSettings",
-        JSON.stringify(settings)
-      );
-
-
-      document.getElementById(
-        "status"
-      ).textContent =
-        "Settings saved locally.";
-
-      updatePreview();
-
-    }
-
-
-    function loadSettings() {
-
-      const saved =
-        localStorage.getItem("siteSettings");
-
-
-      if (!saved) {
-
-        updatePreview();
-
-        return;
-
-      }
-
-
-      try {
-
-        const settings =
-          JSON.parse(saved);
-
-
-        if (settings.title)
-          document.getElementById(
-            "title"
-          ).value = settings.title;
-
-
-        if (settings.headline)
-          document.getElementById(
-            "headline"
-          ).value = settings.headline;
-
-
-        if (settings.button)
-          document.getElementById(
-            "button"
-          ).value = settings.button;
-
-
-        if (settings.description)
-          document.getElementById(
-            "description"
-          ).value = settings.description;
-
-
-        if (settings.doge)
-          document.getElementById(
-            "doge"
-          ).value = settings.doge;
-
-
-      } catch (error) {
-
-        console.error(
-          "Could not load settings:",
-          error
-        );
-
-      }
-
-
-      updatePreview();
 
     }
 
 
     /*
-     * Netlify Identity
+     * IMPORTANT:
+     *
+     * This processes:
+     * - invite_token
+     * - confirmation_token
+     * - recovery_token
+     * - email_change_token
+     *
+     * sent by Netlify in the URL hash.
      */
 
-    showLoading();
+    try {
+
+      const callback =
+        await handleAuthCallback();
 
 
-    if (!window.netlifyIdentity) {
+      if (callback && callback.user) {
+
+        checkAdmin(callback.user);
+
+      } else {
+
+        const user =
+          await getUser();
+
+        checkAdmin(user);
+
+      }
+
+    } catch (error) {
+
+      console.error(
+        "Authentication callback error:",
+        error
+      );
 
       showLogin();
 
-    } else {
-
-      window.netlifyIdentity.on(
-        "init",
-        function(user) {
-
-          if (!user) {
-
-            showLogin();
-
-            return;
-
-          }
-
-
-          /*
-           * Netlify Identity user roles are available
-           * through user.app_metadata.roles.
-           */
-
-          const roles =
-            user.app_metadata &&
-            Array.isArray(
-              user.app_metadata.roles
-            )
-              ? user.app_metadata.roles
-              : [];
-
-
-          if (roles.includes("admin")) {
-
-            showAdmin();
-
-          } else {
-
-            showDenied();
-
-          }
-
-        }
-      );
-
-
-      window.netlifyIdentity.on(
-        "login",
-        function(user) {
-
-          window.netlifyIdentity.close();
-
-
-          const roles =
-            user &&
-            user.app_metadata &&
-            Array.isArray(
-              user.app_metadata.roles
-            )
-              ? user.app_metadata.roles
-              : [];
-
-
-          if (roles.includes("admin")) {
-
-            showAdmin();
-
-          } else {
-
-            showDenied();
-
-          }
-
-        }
-      );
-
-
-      window.netlifyIdentity.on(
-        "logout",
-        function() {
-
-          showLogin();
-
-        }
-      );
-
     }
+
+
+    document
+      .getElementById("loginButton")
+      .addEventListener("click", async () => {
+
+        try {
+
+          await login();
+
+        } catch (error) {
+
+          console.error(error);
+
+          alert(
+            "Login failed. Please try again."
+          );
+
+        }
+
+      });
+
+
+    document
+      .getElementById("logoutButton")
+      .addEventListener("click", async () => {
+
+        await logout();
+
+        showLogin();
+
+      });
+
+
+    document
+      .getElementById("logoutDenied")
+      .addEventListener("click", async () => {
+
+        await logout();
+
+        showLogin();
+
+      });
+
+
+    document
+      .getElementById("saveButton")
+      .addEventListener("click", () => {
+
+        const settings = {
+
+          title:
+            document.getElementById("title").value,
+
+          headline:
+            document.getElementById("headline").value,
+
+          button:
+            document.getElementById("button").value,
+
+          description:
+            document.getElementById("description").value,
+
+          doge:
+            document.getElementById("doge").value
+
+        };
+
+
+        localStorage.setItem(
+          "siteSettings",
+          JSON.stringify(settings)
+        );
+
+
+        document.getElementById(
+          "status"
+        ).textContent =
+          "Saved locally. Next step: connect this to the live website.";
+
+      });
 
   </script>
 
 </body>
 </html>
+```
