@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Give Me One Dollar — Admin</title>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 18px 0 8px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border-radius: 10px;
+      border: 1px solid #444;
+      background: #0d0d0d;
+      color: white;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .save {
+      background: #fff;
+      color: #111;
+    }
+
+    .logout {
+      background: #333;
+      color: white;
+    }
+
+    .status {
+      margin-top: 15px;
+      color: #8cff9a;
+    }
+
+    #login {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    #admin {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="login">
+    <div class="container">
+      <h1>🔐 Admin Panel</h1>
+      <p class="subtitle">You must be logged in as an administrator.</p>
+      <button class="save" onclick="login()">Log in</button>
+    </div>
+  </div>
+
+  <div id="admin">
+    <div class="container">
+
+      <h1>Give Me One Dollar — Admin</h1>
+      <p class="subtitle">
+        Edit your website content here.
+      </p>
+
+      <div class="card">
+
+        <label for="title">Main title</label>
+        <input
+          id="title"
+          value="Seven billion people give me one dollar"
+        >
+
+        <label for="headline">Headline</label>
+        <input
+          id="headline"
+          value="LET'S BEAT ELON MUSK"
+        >
+
+        <label for="button">Button text</label>
+        <input
+          id="button"
+          value="GIVE ME ONE DOLLAR"
+        >
+
+        <label for="doge">Doge image URL</label>
+        <input
+          id="doge"
+          placeholder="https://..."
+        >
+
+        <label for="description">Description</label>
+        <textarea id="description">Seven billion people. One dollar each.</textarea>
+
+        <br><br>
+
+        <button class="save" onclick="saveSettings()">
+          Save Changes
+        </button>
+
+        <button class="logout" onclick="logout()">
+          Log out
+        </button>
+
+        <div id="status" class="status"></div>
+
+      </div>
+
+      <div class="card">
+        <h2>Preview</h2>
+
+        <h1 id="previewTitle">
+          Seven billion people give me one dollar
+        </h1>
+
+        <h2 id="previewHeadline">
+          LET'S BEAT ELON MUSK
+        </h2>
+
+        <p id="previewDescription">
+          Seven billion people. One dollar each.
+        </p>
+
+        <button class="save" id="previewButton">
+          GIVE ME ONE DOLLAR
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.open("login");
+      }
+    }
+
+    function logout() {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.logout();
+      }
+    }
+
+    function updatePreview() {
+      document.getElementById("previewTitle").textContent =
+        document.getElementById("title").value;
+
+      document.getElementById("previewHeadline").textContent =
+        document.getElementById("headline").value;
+
+      document.getElementById("previewDescription").textContent =
+        document.getElementById("description").value;
+
+      document.getElementById("previewButton").textContent =
+        document.getElementById("button").value;
+    }
+
+    async function saveSettings() {
+      updatePreview();
+
+      const settings = {
+        title: document.getElementById("title").value,
+        headline: document.getElementById("headline").value,
+        button: document.getElementById("button").value,
+        doge: document.getElementById("doge").value,
+        description: document.getElementById("description").value
+      };
+
+      /*
+       * For now we save the settings locally.
+       * Next we will connect this to Netlify Blobs,
+       * so changes become permanent for everyone.
+       */
+
+      localStorage.setItem(
+        "siteSettings",
+        JSON.stringify(settings)
+      );
+
+      document.getElementById("status").textContent =
+        "Saved. Next step: connect these settings to the live website.";
+    }
+
+    function loadSettings() {
+      const saved = localStorage.getItem("siteSettings");
+
+      if (!saved) {
+        updatePreview();
+        return;
+      }
+
+      try {
+        const settings = JSON.parse(saved);
+
+        if (settings.title)
+          document.getElementById("title").value = settings.title;
+
+        if (settings.headline)
+          document.getElementById("headline").value = settings.headline;
+
+        if (settings.button)
+          document.getElementById("button").value = settings.button;
+
+        if (settings.doge)
+          document.getElementById("doge").value = settings.doge;
+
+        if (settings.description)
+          document.getElementById("description").value =
+            settings.description;
+
+        updatePreview();
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (window.netlifyIdentity) {
+
+      window.netlifyIdentity.on("init", user => {
+
+        if (user) {
+          document.getElementById("login").style.display = "none";
+          document.getElementById("admin").style.display = "block";
+
+          loadSettings();
+
+        } else {
+          document.getElementById("login").style.display = "block";
+          document.getElementById("admin").style.display = "none";
+        }
+
+      });
+
+      window.netlifyIdentity.on("login", user => {
+        window.netlifyIdentity.close();
+
+        document.getElementById("login").style.display = "none";
+        document.getElementById("admin").style.display = "block";
+
+        loadSettings();
+      });
+
+      window.netlifyIdentity.on("logout", () => {
+        document.getElementById("login").style.display = "block";
+        document.getElementById("admin").style.display = "none";
+      });
+    }
+  </script>
+
+</body>
+</html>
