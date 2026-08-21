@@ -1,7 +1,7 @@
 let total = 0;
 let people = 0;
 
-export default async (request) => {
+export default async () => {
     return new Response(
         JSON.stringify({
             amount: total,
