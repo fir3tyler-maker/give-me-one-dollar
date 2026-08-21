@@ -5,10 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Give Me One Dollar</title>
+<title>Admin — Give Me One Dollar</title>
 
-<meta name="description"
-content="Seven billion people give me one dollar. Let's beat Elon Musk.">
+<meta
+    name="description"
+    content="Administrator panel for Give Me One Dollar."
+>
 
 <style>
 
@@ -26,7 +28,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #fff6d5;
     color: #111;
-    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 body::before {
@@ -43,9 +45,16 @@ body::before {
 }
 
 .container {
-    width: min(1150px, 92%);
+    width: min(900px, 92%);
     margin: auto;
+    position: relative;
+    z-index: 1;
 }
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
 
 nav {
     display: flex;
@@ -60,7 +69,7 @@ nav {
     letter-spacing: -1px;
 }
 
-.nav-button {
+.site-button {
     color: #111;
     background: white;
     text-decoration: none;
@@ -73,331 +82,54 @@ nav {
     font-weight: 900;
 }
 
-.hero {
-    text-align: center;
-    padding: 45px 0 70px;
-}
 
-h1 {
-    font-size: clamp(48px, 9vw, 105px);
-    line-height: 0.88;
-    letter-spacing: -6px;
+/* =====================================================
+   CARD
+   ===================================================== */
 
-    text-transform: uppercase;
+.card {
+    max-width: 650px;
 
-    max-width: 1100px;
-    margin: 20px auto;
-}
-
-.subheadline {
-    font-size: clamp(21px, 3vw, 30px);
-    font-weight: 800;
-
-    margin: 25px auto 40px;
-
-    max-width: 800px;
-}
-
-.main-card {
-    max-width: 950px;
-
-    margin: auto;
+    margin: 70px auto;
 
     background: #fffdf3;
 
     border: 4px solid #111;
-    border-radius: 40px;
+    border-radius: 30px;
 
     padding: 40px 30px;
 
-    box-shadow: 12px 12px 0 #111;
+    box-shadow: 10px 10px 0 #111;
 }
 
-.doge {
-    width: 310px;
-    height: 310px;
+.card h1 {
+    font-size: clamp(45px, 9vw, 75px);
 
-    object-fit: cover;
+    line-height: 0.9;
 
-    display: block;
-
-    margin: 0 auto 35px;
-
-    border-radius: 50%;
-
-    border: 6px solid #111;
-
-    box-shadow: 9px 9px 0 #111;
-
-    animation: floatDoge 3s ease-in-out infinite;
-}
-
-@keyframes floatDoge {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-}
-
-.counter-label {
-    font-size: 20px;
-    font-weight: 900;
+    letter-spacing: -5px;
 
     text-transform: uppercase;
 
+    margin-bottom: 15px;
+}
+
+.subtitle {
     color: #6d6555;
-}
 
-.counter {
-    font-size: clamp(48px, 9vw, 92px);
+    font-weight: 800;
 
-    font-weight: 1000;
+    line-height: 1.5;
 
-    letter-spacing: -6px;
-
-    line-height: 1;
-
-    margin: 8px 0;
-}
-
-.target {
-    font-size: 20px;
-    font-weight: 900;
-
-    color: #6d6555;
-}
-
-.progress-box {
-    height: 38px;
-
-    background: #e5ddc4;
-
-    border: 3px solid #111;
-
-    border-radius: 999px;
-
-    overflow: hidden;
-
-    margin: 28px 0 15px;
-}
-
-.progress {
-    height: 100%;
-    width: 0%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ffd43b,
-            #ff9f00
-        );
-
-    transition: width 0.5s ease;
-}
-
-.people {
-    font-size: 18px;
-    font-weight: 900;
-}
-
-.elon {
-    margin-top: 35px;
-
-    font-size: clamp(35px, 6vw, 65px);
-
-    line-height: 0.95;
-
-    font-weight: 1000;
-
-    letter-spacing: -3px;
-
-    text-transform: uppercase;
-}
-
-.elon span {
-    display: block;
-
-    background: #ffd43b;
-
-    border: 3px solid #111;
-
-    border-radius: 12px;
-
-    padding: 8px 15px;
-
-    width: fit-content;
-
-    margin: 15px auto 0;
-
-    transform: rotate(-2deg);
-}
-
-.give-button {
-
-    display: inline-block;
-
-    margin-top: 35px;
-
-    padding: 19px 32px;
-
-    background: #111;
-
-    color: white;
-
-    text-decoration: none;
-
-    border-radius: 17px;
-
-    font-size: 24px;
-
-    font-weight: 1000;
-
-    border: 3px solid #111;
-
-    box-shadow: 7px 7px 0 #ff9f00;
-
-    transition: 0.15s;
-}
-
-.give-button:hover {
-
-    transform:
-        translate(4px, 4px);
-
-    box-shadow:
-        3px 3px 0 #ff9f00;
-}
-
-.note {
-    margin-top: 20px;
-
-    font-size: 14px;
-
-    color: #756d5c;
-
-    font-weight: 700;
-}
-
-footer {
-
-    border-top: 3px solid #111;
-
-    margin-top: 40px;
-
-    padding: 40px 0 60px;
-
-    text-align: center;
-
-    color: #756d5c;
-
-    font-weight: 700;
-}
-
-@media (max-width: 700px) {
-
-    h1 {
-        letter-spacing: -3px;
-    }
-
-    .main-card {
-        padding: 30px 17px;
-
-        box-shadow:
-            7px 7px 0 #111;
-    }
-
-    .doge {
-        width: 220px;
-        height: 220px;
-    }
-
-    .counter {
-        letter-spacing: -3px;
-    }
-
+    margin-bottom: 30px;
 }
 
 
 /* =====================================================
-   AUTH SCREEN
+   LOGIN FORM
    ===================================================== */
 
-#authScreen {
-
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 999999;
-
-    background: #fff6d5;
-
-    overflow-y: auto;
-}
-
-.auth-wrapper {
-
-    width: min(520px, 92%);
-
-    margin: 70px auto;
-
-}
-
-.auth-card {
-
-    background: #fffdf3;
-
-    border: 4px solid #111;
-
-    border-radius: 30px;
-
-    padding: 35px 28px;
-
-    box-shadow: 10px 10px 0 #111;
-
-    text-align: center;
-
-}
-
-.auth-doge {
-
-    font-size: 60px;
-
-    margin-bottom: 10px;
-
-}
-
-.auth-card h2 {
-
-    font-size: 38px;
-
-    line-height: 1;
-
-    margin-bottom: 15px;
-
-    text-transform: uppercase;
-
-}
-
-.auth-card p {
-
-    color: #6d6555;
-
-    font-weight: 700;
-
-    margin-bottom: 25px;
-
-}
-
-.auth-card label {
-
+label {
     display: block;
 
     text-align: left;
@@ -405,11 +137,9 @@ footer {
     font-weight: 900;
 
     margin: 18px 0 7px;
-
 }
 
-.auth-card input {
-
+input {
     width: 100%;
 
     padding: 15px;
@@ -425,17 +155,13 @@ footer {
     font-size: 17px;
 
     outline: none;
-
 }
 
-.auth-card input:focus {
-
+input:focus {
     box-shadow: 4px 4px 0 #ffd43b;
-
 }
 
-.auth-button {
-
+button {
     width: 100%;
 
     margin-top: 25px;
@@ -455,72 +181,120 @@ footer {
     font-weight: 1000;
 
     cursor: pointer;
-
 }
 
-.auth-button:disabled {
+button:hover {
+    transform: translateY(-1px);
+}
 
+button:disabled {
     opacity: 0.6;
 
     cursor: wait;
 
+    transform: none;
 }
 
-.auth-error {
 
+/* =====================================================
+   MESSAGES
+   ===================================================== */
+
+.message {
     display: none;
 
-    margin-top: 15px;
+    margin-top: 18px;
 
-    padding: 12px;
+    padding: 13px;
 
     border-radius: 10px;
 
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+.error {
     background: #ffd5d5;
 
     border: 2px solid #b00000;
 
     color: #8b0000;
-
-    font-weight: 800;
-
 }
 
-.auth-success {
-
-    display: none;
-
-    margin-top: 15px;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
+.success {
     background: #d8ffd8;
 
     border: 2px solid #087508;
 
     color: #075d07;
-
-    font-weight: 800;
-
 }
 
-.auth-close {
 
-    margin-top: 18px;
+/* =====================================================
+   ADMIN PANEL
+   ===================================================== */
 
-    border: 0;
+#adminPanel {
+    display: none;
+}
 
-    background: transparent;
+.admin-box {
+    background: white;
 
-    text-decoration: underline;
+    border: 3px solid #111;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    margin-top: 20px;
+}
+
+.admin-box h2 {
+    font-size: 24px;
+
+    margin-bottom: 12px;
+}
+
+.user-email {
+    font-weight: 900;
+
+    word-break: break-word;
+}
+
+.roles {
+    margin-top: 8px;
+
+    color: #6d6555;
 
     font-weight: 800;
+}
 
-    cursor: pointer;
+.logout-button {
+    background: white;
 
-    color: #555;
+    color: #111;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .card {
+        margin: 45px auto;
+
+        padding: 30px 20px;
+
+        box-shadow: 7px 7px 0 #111;
+    }
+
+    .card h1 {
+        letter-spacing: -3px;
+    }
 
 }
 
@@ -530,99 +304,12 @@ footer {
 
 <body>
 
-
-<!-- =====================================================
-     PASSWORD / INVITE SCREEN
-     ===================================================== -->
-
-<div id="authScreen">
-
-    <div class="auth-wrapper">
-
-        <div class="auth-card">
-
-            <div class="auth-doge">
-                🐕
-            </div>
-
-            <h2 id="authTitle">
-                Create your password
-            </h2>
-
-            <p id="authDescription">
-                Finish setting up your administrator account.
-            </p>
-
-
-            <form id="authForm">
-
-                <label for="password">
-                    Password
-                </label>
-
-                <input
-                    id="password"
-                    type="password"
-                    minlength="8"
-                    autocomplete="new-password"
-                    required
-                >
-
-
-                <label for="passwordConfirm">
-                    Confirm password
-                </label>
-
-                <input
-                    id="passwordConfirm"
-                    type="password"
-                    minlength="8"
-                    autocomplete="new-password"
-                    required
-                >
-
-
-                <button
-                    id="authButton"
-                    type="submit"
-                    class="auth-button"
-                >
-                    ACTIVATE ACCOUNT
-                </button>
-
-
-                <div
-                    id="authError"
-                    class="auth-error"
-                ></div>
-
-
-                <div
-                    id="authSuccess"
-                    class="auth-success"
-                ></div>
-
-            </form>
-
-
-            <button
-                id="authClose"
-                class="auth-close"
-                type="button"
-            >
-                Cancel
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
 <div class="container">
 
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
 
 <nav>
 
@@ -631,158 +318,153 @@ footer {
     </div>
 
     <a
-        href="#give"
-        class="nav-button"
+        href="/"
+        class="site-button"
     >
-        GIVE ME $1
+        ← SITE
     </a>
 
 </nav>
 
 
-<section class="hero">
 
+<!-- =====================================================
+     LOGIN
+     ===================================================== -->
+
+<section
+    id="loginPanel"
+    class="card"
+>
 
     <h1>
-
-        SEVEN BILLION
-        PEOPLE GIVE ME
-        ONE DOLLAR.
-
+        ADMIN
     </h1>
 
-
-    <p class="subheadline">
-
-        $1 × 7,000,000,000 =
-        $7,000,000,000
-
+    <p class="subtitle">
+        This area is restricted to the administrator.
+        Log in with your administrator account.
     </p>
 
 
-    <div class="main-card">
+    <form id="loginForm">
 
+        <label for="email">
+            Email
+        </label>
 
-        <img
-
-            class="doge"
-
-            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kabosu_and_Atsuko_Sato_2023-11-02_(1).jpg"
-
-            alt="Kabosu, the original Doge meme dog"
-
+        <input
+            id="email"
+            type="email"
+            autocomplete="username"
+            placeholder="your@email.com"
+            required
         >
 
 
-        <div class="counter-label">
+        <label for="password">
+            Password
+        </label>
 
-            CURRENTLY RAISED
+        <input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Your password"
+            required
+        >
 
-        </div>
+
+        <button
+            id="loginButton"
+            type="submit"
+        >
+            LOGIN
+        </button>
 
 
         <div
-            class="counter"
-            id="amount"
-        >
-
-            $0
-
-        </div>
-
-
-        <div class="target">
-
-            TARGET:
-            $7,000,000,000
-
-        </div>
-
-
-        <div class="progress-box">
-
-            <div
-                class="progress"
-                id="progress"
-            ></div>
-
-        </div>
+            id="loginError"
+            class="message error"
+        ></div>
 
 
         <div
-            class="people"
-            id="people"
-        >
+            id="loginSuccess"
+            class="message success"
+        ></div>
 
-            0 PEOPLE
-
-        </div>
-
-
-        <div class="elon">
-
-            LET'S BEAT
-
-            <span>
-
-                ELON MUSK.
-
-            </span>
-
-        </div>
-
-
-        <div id="give">
-
-            <a
-
-                href="#"
-
-                class="give-button"
-
-                id="paymentButton"
-
-            >
-
-                GIVE ME $1 →
-
-            </a>
-
-        </div>
-
-
-        <div class="note">
-
-            One dollar.
-            That's all.
-
-        </div>
-
-
-    </div>
-
+    </form>
 
 </section>
 
 
-<footer>
 
-    <strong>
-        GIVE ME ONE DOLLAR.
-    </strong>
+<!-- =====================================================
+     ADMIN PANEL
+     ===================================================== -->
 
-    <br><br>
+<section
+    id="adminPanel"
+    class="card"
+>
 
-    🐕 $1 → $7,000,000,000
+    <h1>
+        ADMIN
+    </h1>
 
-    <br><br>
+    <p class="subtitle">
+        Welcome to the Give Me One Dollar administrator panel.
+    </p>
 
-    <small>
-        Doge image:
-        Wikimedia Commons / CC0
-    </small>
 
-</footer>
+    <div class="admin-box">
+
+        <h2>
+            Account
+        </h2>
+
+        <div
+            id="userEmail"
+            class="user-email"
+        >
+            —
+        </div>
+
+        <div
+            id="userRoles"
+            class="roles"
+        >
+            —
+        </div>
+
+    </div>
+
+
+    <div class="admin-box">
+
+        <h2>
+            Site controls
+        </h2>
+
+        <p>
+            You are authenticated as an administrator.
+            Design, images, counters and other controls
+            can be added here.
+        </p>
+
+    </div>
+
+
+    <button
+        id="logoutButton"
+        class="logout-button"
+        type="button"
+    >
+        LOG OUT
+    </button>
+
+</section>
 
 
 </div>
@@ -793,60 +475,65 @@ footer {
 
 /*
 =====================================================
-NETLIFY IDENTITY
+NETLIFY IDENTITY — CURRENT API
 =====================================================
 
-IMPORTANT:
+Uses:
 
-This uses the current @netlify/identity API.
+@netlify/identity
 
-Invite flow:
+This is the current Netlify Identity approach
+for new projects.
 
-invite email
-      ↓
-#invite_token=...
-      ↓
-handleAuthCallback()
-      ↓
-acceptInvite(token, password)
-      ↓
-admin account
-      ↓
-/admin/
+We intentionally do NOT use:
 
+- Netlify Identity Widget
+- gotrue-js
+- legacy widget code
 =====================================================
 */
 
 
 import {
-    handleAuthCallback,
-    acceptInvite,
-    updateUser,
-    getUser
+    login,
+    logout,
+    getUser,
+    handleAuthCallback
 } from "https://cdn.jsdelivr.net/npm/@netlify/identity/+esm";
 
 
-const authScreen =
+
+/* =====================================================
+   ELEMENTS
+   ===================================================== */
+
+const loginPanel =
     document.getElementById(
-        "authScreen"
+        "loginPanel"
     );
 
 
-const authTitle =
+const adminPanel =
     document.getElementById(
-        "authTitle"
+        "adminPanel"
     );
 
 
-const authDescription =
+const loginForm =
     document.getElementById(
-        "authDescription"
+        "loginForm"
     );
 
 
-const authForm =
+const loginButton =
     document.getElementById(
-        "authForm"
+        "loginButton"
+    );
+
+
+const emailInput =
+    document.getElementById(
+        "email"
     );
 
 
@@ -856,151 +543,148 @@ const passwordInput =
     );
 
 
-const passwordConfirmInput =
+const loginError =
     document.getElementById(
-        "passwordConfirm"
+        "loginError"
     );
 
 
-const authButton =
+const loginSuccess =
     document.getElementById(
-        "authButton"
+        "loginSuccess"
     );
 
 
-const authError =
+const userEmail =
     document.getElementById(
-        "authError"
+        "userEmail"
     );
 
 
-const authSuccess =
+const userRoles =
     document.getElementById(
-        "authSuccess"
+        "userRoles"
     );
 
 
-const authClose =
+const logoutButton =
     document.getElementById(
-        "authClose"
+        "logoutButton"
     );
 
 
-let authMode =
-    null;
 
+/* =====================================================
+   MESSAGES
+   ===================================================== */
 
-let inviteToken =
-    null;
+function showError(message) {
 
-
-
-function showAuthScreen(
-    mode,
-    token = null
-) {
-
-    authMode =
-        mode;
-
-    inviteToken =
-        token;
-
-
-    authScreen.style.display =
-        "block";
-
-
-    authError.style.display =
-        "none";
-
-
-    authSuccess.style.display =
-        "none";
-
-
-    passwordInput.value =
-        "";
-
-
-    passwordConfirmInput.value =
-        "";
-
-
-    if (mode === "invite") {
-
-        authTitle.textContent =
-            "Create your password";
-
-        authDescription.textContent =
-            "Welcome! Create a password to activate your administrator account.";
-
-        authButton.textContent =
-            "ACTIVATE ACCOUNT";
-
-    }
-
-
-    if (mode === "recovery") {
-
-        authTitle.textContent =
-            "Reset your password";
-
-        authDescription.textContent =
-            "Create a new password for your account.";
-
-        authButton.textContent =
-            "SAVE NEW PASSWORD";
-
-    }
-
-}
-
-
-
-function showError(
-    message
-) {
-
-    authError.textContent =
+    loginError.textContent =
         message;
 
-    authError.style.display =
+    loginError.style.display =
         "block";
 
 }
 
 
+function showSuccess(message) {
 
-function showSuccess(
-    message
-) {
-
-    authSuccess.textContent =
+    loginSuccess.textContent =
         message;
 
-    authSuccess.style.display =
+    loginSuccess.style.display =
         "block";
 
 }
 
 
+function clearMessages() {
 
-/*
-=====================================================
-HANDLE INVITE / RECOVERY / CONFIRMATION
-=====================================================
-*/
+    loginError.textContent =
+        "";
 
-async function processIdentityCallback() {
+    loginSuccess.textContent =
+        "";
+
+    loginError.style.display =
+        "none";
+
+    loginSuccess.style.display =
+        "none";
+
+}
+
+
+
+/* =====================================================
+   SHOW LOGIN
+   ===================================================== */
+
+function showLogin() {
+
+    loginPanel.style.display =
+        "block";
+
+    adminPanel.style.display =
+        "none";
+
+}
+
+
+
+/* =====================================================
+   SHOW ADMIN
+   ===================================================== */
+
+function showAdmin(user) {
+
+    loginPanel.style.display =
+        "none";
+
+    adminPanel.style.display =
+        "block";
+
+
+    userEmail.textContent =
+        user.email || "Unknown";
+
+
+    const roles =
+        Array.isArray(user.roles)
+            ? user.roles
+            : [];
+
+
+    userRoles.textContent =
+        roles.length
+            ? "Roles: " + roles.join(", ")
+            : "Roles: none";
+
+}
+
+
+
+/* =====================================================
+   CHECK ADMIN
+   ===================================================== */
+
+async function checkCurrentUser() {
 
     try {
 
-        const result =
-            await handleAuthCallback();
+        const user =
+            await getUser();
 
 
-        if (!result) {
+        /*
+         * Nobody is logged in.
+         */
+
+        if (!user) {
+
+            showLogin();
 
             return;
 
@@ -1008,40 +692,36 @@ async function processIdentityCallback() {
 
 
         console.log(
-            "Netlify Identity callback:",
-            result.type
+            "Netlify Identity user:",
+            user
         );
 
 
+        const roles =
+            Array.isArray(user.roles)
+                ? user.roles
+                : [];
+
+
         /*
-         * INVITATION
+         * User is authenticated but
+         * doesn't have admin role.
          */
 
         if (
-            result.type === "invite"
+            !roles.includes("admin")
         ) {
 
-            showAuthScreen(
-                "invite",
-                result.token
+            await logout();
+
+
+            showLogin();
+
+
+            showError(
+                "This account is authenticated, but it does not have the administrator role."
             );
 
-            return;
-
-        }
-
-
-        /*
-         * PASSWORD RECOVERY
-         */
-
-        if (
-            result.type === "recovery"
-        ) {
-
-            showAuthScreen(
-                "recovery"
-            );
 
             return;
 
@@ -1049,66 +729,26 @@ async function processIdentityCallback() {
 
 
         /*
-         * EMAIL CONFIRMATION
+         * User is authenticated
+         * AND is an administrator.
          */
 
-        if (
-            result.type === "confirmation"
-        ) {
-
-            window.location.href =
-                "/admin/";
-
-            return;
-
-        }
-
-
-        /*
-         * EMAIL CHANGE
-         */
-
-        if (
-            result.type === "email_change"
-        ) {
-
-            window.location.href =
-                "/admin/";
-
-            return;
-
-        }
-
-
-        /*
-         * OAUTH
-         */
-
-        if (
-            result.type === "oauth"
-        ) {
-
-            window.location.href =
-                "/admin/";
-
-            return;
-
-        }
+        showAdmin(user);
 
     } catch (error) {
 
         console.error(
-            "Identity callback error:",
+            "Identity check failed:",
             error
         );
 
-        showError(
-            error.message ||
-            "Authentication failed. Please request a new invitation."
-        );
 
-        authScreen.style.display =
-            "block";
+        showLogin();
+
+
+        showError(
+            "Unable to verify your administrator account."
+        );
 
     }
 
@@ -1116,41 +756,35 @@ async function processIdentityCallback() {
 
 
 
-/*
-=====================================================
-PASSWORD FORM
-=====================================================
-*/
+/* =====================================================
+   LOGIN
+   ===================================================== */
 
-authForm.addEventListener(
+loginForm.addEventListener(
     "submit",
     async function(event) {
 
         event.preventDefault();
 
 
-        authError.style.display =
-            "none";
+        clearMessages();
 
 
-        authSuccess.style.display =
-            "none";
+        const email =
+            emailInput.value.trim();
 
 
         const password =
             passwordInput.value;
 
 
-        const passwordConfirm =
-            passwordConfirmInput.value;
-
-
         if (
-            password.length < 8
+            !email ||
+            !password
         ) {
 
             showError(
-                "Password must be at least 8 characters."
+                "Enter your email and password."
             );
 
             return;
@@ -1158,164 +792,107 @@ authForm.addEventListener(
         }
 
 
-        if (
-            password !== passwordConfirm
-        ) {
-
-            showError(
-                "The passwords do not match."
-            );
-
-            return;
-
-        }
-
-
-        authButton.disabled =
+        loginButton.disabled =
             true;
 
 
-        authButton.textContent =
-            "ACTIVATING ACCOUNT...";
+        loginButton.textContent =
+            "LOGGING IN...";
 
 
         try {
 
-
             /*
-             * INVITE
+             * CURRENT NETLIFY IDENTITY LOGIN
              */
 
+            const user =
+                await login(
+                    email,
+                    password
+                );
+
+
+            console.log(
+                "Login successful:",
+                user
+            );
+
+
+            /*
+             * Check admin role.
+             */
+
+            const roles =
+                Array.isArray(user.roles)
+                    ? user.roles
+                    : [];
+
+
             if (
-                authMode === "invite"
+                !roles.includes("admin")
             ) {
-
-                if (!inviteToken) {
-
-                    throw new Error(
-                        "The invitation token is missing or expired."
-                    );
-
-                }
-
-
-                const user =
-                    await acceptInvite(
-                        inviteToken,
-                        password
-                    );
-
-
-                console.log(
-                    "Invite accepted:",
-                    user
-                );
-
-
-                showSuccess(
-                    "Account activated successfully! Redirecting to admin..."
-                );
-
 
                 /*
-                 * Give Netlify a moment
-                 * to establish the session.
+                 * Authentication worked,
+                 * but authorization failed.
                  */
 
-                setTimeout(
-                    async function() {
-
-                        const currentUser =
-                            await getUser();
+                await logout();
 
 
-                        if (
-                            currentUser
-                        ) {
-
-                            window.location.href =
-                                "/admin/";
-
-                        } else {
-
-                            /*
-                             * Full reload also lets
-                             * Netlify restore the session.
-                             */
-
-                            window.location.assign(
-                                "/admin/"
-                            );
-
-                        }
-
-                    },
-                    1000
+                throw new Error(
+                    "Login worked, but this account does not have the admin role."
                 );
 
-
-                return;
-
             }
+
+
+            showSuccess(
+                "Login successful."
+            );
 
 
             /*
-             * PASSWORD RECOVERY
+             * Small delay only for visual feedback.
              */
 
-            if (
-                authMode === "recovery"
-            ) {
+            setTimeout(
+                function() {
 
-                await updateUser({
-                    password:
-                        password
-                });
+                    showAdmin(user);
 
-
-                showSuccess(
-                    "Password updated successfully! Redirecting..."
-                );
-
-
-                setTimeout(
-                    function() {
-
-                        window.location.href =
-                            "/admin/";
-
-                    },
-                    1000
-                );
-
-
-                return;
-
-            }
+                },
+                300
+            );
 
 
         } catch (error) {
 
             console.error(
-                "Authentication action failed:",
+                "Netlify Identity login error:",
                 error
             );
 
 
+            /*
+             * Show the actual Netlify error
+             * instead of hiding it behind
+             * a generic message.
+             */
+
             showError(
-                error.message ||
-                "Something went wrong. Please request a new invitation."
+                error?.message ||
+                "Login failed. Please check your email and password."
             );
 
 
-            authButton.disabled =
+            loginButton.disabled =
                 false;
 
 
-            authButton.textContent =
-                authMode === "invite"
-                    ? "ACTIVATE ACCOUNT"
-                    : "SAVE NEW PASSWORD";
+            loginButton.textContent =
+                "LOGIN";
 
         }
 
@@ -1324,168 +901,136 @@ authForm.addEventListener(
 
 
 
-/*
-=====================================================
-CANCEL
-=====================================================
-*/
+/* =====================================================
+   LOGOUT
+   ===================================================== */
 
-authClose.addEventListener(
+logoutButton.addEventListener(
     "click",
-    function() {
+    async function() {
 
-        authScreen.style.display =
-            "none";
-
-
-        authMode =
-            null;
-
-        inviteToken =
-            null;
+        logoutButton.disabled =
+            true;
 
 
-        window.history.replaceState(
-            {},
-            document.title,
-            window.location.pathname
-        );
+        logoutButton.textContent =
+            "LOGGING OUT...";
+
+
+        try {
+
+            await logout();
+
+            window.location.reload();
+
+        } catch (error) {
+
+            console.error(
+                "Logout failed:",
+                error
+            );
+
+
+            logoutButton.disabled =
+                false;
+
+
+            logoutButton.textContent =
+                "LOG OUT";
+
+        }
 
     }
 );
 
 
 
-/*
-=====================================================
-START IDENTITY CALLBACK
-=====================================================
-*/
-
-processIdentityCallback();
-
-
-
 /* =====================================================
-   STRIPE PAYMENT
-   ===================================================== */
+   HANDLE NETLIFY CALLBACK
+   =====================================================
 
-const STRIPE_LINK =
-    "https://buy.stripe.com/14A9AL1PScxdfUx8N6ao800";
+   This allows Netlify Identity to process:
 
+   - invite_token
+   - recovery_token
+   - confirmation_token
+   - OAuth callbacks
 
-document
-    .getElementById("paymentButton")
-    .addEventListener(
-        "click",
-        function(event) {
+   IMPORTANT:
+   The invite/password setup happens through
+   handleAuthCallback().
 
-            event.preventDefault();
+   Once the account is activated, normal
+   administrator login uses login().
+===================================================== */
 
+async function processAuthCallback() {
 
-            if (
-                STRIPE_LINK === ""
-            ) {
+    /*
+     * If there is no hash in the URL,
+     * there is nothing to process.
+     */
 
-                alert(
-                    "Payment is being connected. Please check back soon!"
-                );
+    if (
+        !window.location.hash
+    ) {
 
-                return;
+        await checkCurrentUser();
 
-            }
+        return;
 
+    }
 
-            window.location.href =
-                STRIPE_LINK;
-
-        }
-    );
-
-
-
-/* =====================================================
-   LIVE COUNTER
-   ===================================================== */
-
-async function loadCounter() {
 
     try {
 
-        const response =
-            await fetch(
-                "/.netlify/functions/counter",
-                {
-                    cache: "no-store"
-                }
-            );
+        const result =
+            await handleAuthCallback();
 
 
-        if (!response.ok) {
+        console.log(
+            "Identity callback:",
+            result
+        );
 
-            throw new Error(
-                "Counter request failed"
+
+        /*
+         * If Netlify completed an authentication
+         * callback successfully, check the session.
+         */
+
+        if (result) {
+
+            /*
+             * Remove authentication token
+             * from the visible URL.
+             */
+
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
             );
 
         }
 
 
-        const data =
-            await response.json();
-
-
-        const amount =
-            Number(
-                data.amount || 0
-            );
-
-
-        const people =
-            Number(
-                data.people || 0
-            );
-
-
-        document.getElementById(
-            "amount"
-        ).textContent =
-            "$" +
-            amount.toLocaleString(
-                "en-US"
-            );
-
-
-        document.getElementById(
-            "people"
-        ).textContent =
-            people.toLocaleString(
-                "en-US"
-            ) +
-            " PEOPLE";
-
-
-        const percentage =
-            (
-                amount /
-                7000000000
-            ) *
-            100;
-
-
-        document.getElementById(
-            "progress"
-        ).style.width =
-            Math.min(
-                percentage,
-                100
-            ) + "%";
-
+        await checkCurrentUser();
 
     } catch (error) {
 
         console.error(
-            "Counter error:",
+            "Identity callback failed:",
             error
+        );
+
+
+        showLogin();
+
+
+        showError(
+            error?.message ||
+            "Authentication callback failed. Please request a new link if necessary."
         );
 
     }
@@ -1493,18 +1038,15 @@ async function loadCounter() {
 }
 
 
-loadCounter();
 
+/* =====================================================
+   START
+   ===================================================== */
 
-setInterval(
-    loadCounter,
-    15000
-);
+processAuthCallback();
 
 </script>
-
 
 </body>
 </html>
 ```
-
