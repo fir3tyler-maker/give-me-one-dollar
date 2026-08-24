@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,52 +21,35 @@
 
 body {
     margin: 0;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: #111;
-
     color: #fff;
 }
 
 .container {
     width: min(850px, 92%);
-
     margin: auto;
-
     padding: 50px 0;
 }
 
 h1 {
     font-size: clamp(40px, 8vw, 70px);
-
     line-height: .9;
-
     letter-spacing: -4px;
-
     margin-bottom: 10px;
 }
 
 .subtitle {
     color: #aaa;
-
     margin-bottom: 40px;
-
     font-weight: 700;
 }
 
 .panel {
     background: #fff;
-
     color: #111;
-
     border-radius: 25px;
-
     padding: 30px;
-
     border: 4px solid #fff;
 }
 
@@ -75,36 +59,25 @@ h1 {
 
 label {
     display: block;
-
     font-size: 12px;
-
     font-weight: 1000;
-
     text-transform: uppercase;
-
     margin-bottom: 8px;
 }
 
 input,
 textarea {
     width: 100%;
-
     padding: 14px;
-
     font-size: 16px;
-
     font-family: inherit;
-
     border: 3px solid #111;
-
     border-radius: 12px;
-
     outline: none;
 }
 
 textarea {
     min-height: 130px;
-
     resize: vertical;
 }
 
@@ -115,21 +88,13 @@ textarea:focus {
 
 button {
     width: 100%;
-
     padding: 17px;
-
     border: 3px solid #111;
-
     border-radius: 14px;
-
     background: #ffd43b;
-
     color: #111;
-
     font-size: 18px;
-
     font-weight: 1000;
-
     cursor: pointer;
 }
 
@@ -137,30 +102,61 @@ button:hover {
     background: #ff9f00;
 }
 
+.upload-box {
+    border: 3px dashed #111;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.upload-box input {
+    border: 0;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.upload-button {
+    background: #111;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.upload-button:hover {
+    background: #333;
+}
+
+.current-file {
+    margin-top: 12px;
+    padding: 12px;
+    background: #eee;
+    border-radius: 10px;
+    font-size: 13px;
+    word-break: break-all;
+}
+
 .status {
     margin-top: 18px;
-
     text-align: center;
-
     font-weight: 900;
 }
 
 .back {
     display: inline-block;
-
     margin-top: 25px;
-
     color: #fff;
-
     font-weight: 900;
-
     text-decoration: none;
+}
+
+hr {
+    border: 0;
+    border-top: 2px solid #ddd;
+    margin: 35px 0;
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -173,7 +169,6 @@ ADMIN
 <div class="subtitle">
 Doge vs Elon Musk — Site Control
 </div>
-
 
 <div class="panel">
 
@@ -190,7 +185,6 @@ Main Title
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -203,7 +197,6 @@ Subtitle
 >
 
 </div>
-
 
 <div class="field">
 
@@ -218,7 +211,6 @@ Price
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -232,7 +224,6 @@ Buy Button Text
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -245,43 +236,76 @@ About
 
 </div>
 
+<hr>
 
-<div class="field">
+<h2>
+Song
+</h2>
 
-<label>
-Song File Key
-</label>
-
-<input
-    id="song_key"
-    type="text"
-    placeholder="Example: songs/doge-vs-elon-musk.mp3"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Image File Key
-</label>
+<div class="upload-box">
 
 <input
-    id="image_key"
-    type="text"
-    placeholder="Example: images/hero.jpg"
+    id="songFile"
+    type="file"
+    accept=".mp3,audio/mpeg"
 >
-
-</div>
-
 
 <button
+    type="button"
+    class="upload-button"
+    onclick="uploadSong()"
+>
+    UPLOAD SONG
+</button>
+
+<div
+    class="current-file"
+    id="songCurrent"
+>
+    No song uploaded.
+</div>
+
+</div>
+
+<hr>
+
+<h2>
+Hero Image
+</h2>
+
+<div class="upload-box">
+
+<input
+    id="imageFile"
+    type="file"
+    accept="image/jpeg,image/png,image/webp"
+>
+
+<button
+    type="button"
+    class="upload-button"
+    onclick="uploadImage()"
+>
+    UPLOAD IMAGE
+</button>
+
+<div
+    class="current-file"
+    id="imageCurrent"
+>
+    No image uploaded.
+</div>
+
+</div>
+
+<hr>
+
+<button
+    type="button"
     onclick="saveSettings()"
 >
     SAVE CHANGES
 </button>
-
 
 <div
     class="status"
@@ -289,7 +313,6 @@ Image File Key
 ></div>
 
 </div>
-
 
 <a
     href="/"
@@ -299,7 +322,6 @@ Image File Key
 </a>
 
 </div>
-
 
 <script>
 
@@ -320,7 +342,10 @@ async function loadSettings() {
 
         const response =
             await fetch(
-                "/admin-api"
+                "/admin-api",
+                {
+                    credentials: "include"
+                }
             );
 
         if (!response.ok) {
@@ -339,20 +364,42 @@ async function loadSettings() {
                     field
                 );
 
-            element.value =
-                data[field] || "";
+            if (element) {
+                element.value =
+                    data[field] || "";
+            }
 
         }
 
+        updateCurrentFiles(data);
+
     } catch (error) {
 
-        document.getElementById(
-            "status"
-        ).textContent =
-            "Failed to load settings.";
+        setStatus(
+            "Failed to load settings.",
+            true
+        );
 
         console.error(error);
     }
+}
+
+
+function updateCurrentFiles(data) {
+
+    document.getElementById(
+        "songCurrent"
+    ).textContent =
+        data.song_key
+            ? `Current: ${data.song_key}`
+            : "No song uploaded.";
+
+    document.getElementById(
+        "imageCurrent"
+    ).textContent =
+        data.image_key
+            ? `Current: ${data.image_key}`
+            : "No image uploaded.";
 }
 
 
@@ -369,16 +416,7 @@ async function saveSettings() {
 
     }
 
-
-    const status =
-        document.getElementById(
-            "status"
-        );
-
-
-    status.textContent =
-        "Saving...";
-
+    setStatus("Saving...");
 
     try {
 
@@ -387,6 +425,8 @@ async function saveSettings() {
                 "/admin-api",
                 {
                     method: "POST",
+
+                    credentials: "include",
 
                     headers: {
                         "Content-Type":
@@ -398,27 +438,262 @@ async function saveSettings() {
                 }
             );
 
+        if (!response.ok) {
+
+            const error =
+                await response.text();
+
+            throw new Error(error);
+        }
+
+        setStatus(
+            "Saved successfully."
+        );
+
+    } catch (error) {
+
+        setStatus(
+            "Failed to save.",
+            true
+        );
+
+        console.error(error);
+    }
+}
+
+
+async function uploadSong() {
+
+    const file =
+        document.getElementById(
+            "songFile"
+        ).files[0];
+
+    if (!file) {
+
+        setStatus(
+            "Select an MP3 file first.",
+            true
+        );
+
+        return;
+    }
+
+    if (
+        file.type !== "audio/mpeg" &&
+        file.type !== "audio/mp3"
+    ) {
+
+        setStatus(
+            "Only MP3 files are allowed.",
+            true
+        );
+
+        return;
+    }
+
+    setStatus(
+        "Uploading song..."
+    );
+
+    const formData =
+        new FormData();
+
+    formData.append(
+        "file",
+        file
+    );
+
+    formData.append(
+        "type",
+        "song"
+    );
+
+    try {
+
+        const response =
+            await fetch(
+                "/admin-api",
+                {
+                    method: "POST",
+
+                    credentials: "include",
+
+                    body: formData
+                }
+            );
+
+        const data =
+            await response.json();
 
         if (!response.ok) {
 
             throw new Error(
-                "Save failed"
+                data.error ||
+                "Song upload failed"
             );
-
         }
 
+        document.getElementById(
+            "song_key"
+        ).value =
+            data.key;
 
-        status.textContent =
-            "Saved successfully.";
+        document.getElementById(
+            "songCurrent"
+        ).textContent =
+            `Current: ${data.key}`;
+
+        await saveSettings();
+
+        document.getElementById(
+            "songFile"
+        ).value = "";
+
+        setStatus(
+            "Song uploaded successfully."
+        );
 
     } catch (error) {
 
-        status.textContent =
-            "Failed to save.";
+        setStatus(
+            error.message,
+            true
+        );
 
         console.error(error);
     }
+}
 
+
+async function uploadImage() {
+
+    const file =
+        document.getElementById(
+            "imageFile"
+        ).files[0];
+
+    if (!file) {
+
+        setStatus(
+            "Select an image first.",
+            true
+        );
+
+        return;
+    }
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if (
+        !allowedTypes.includes(
+            file.type
+        )
+    ) {
+
+        setStatus(
+            "Only JPG, PNG and WebP images are allowed.",
+            true
+        );
+
+        return;
+    }
+
+    setStatus(
+        "Uploading image..."
+    );
+
+    const formData =
+        new FormData();
+
+    formData.append(
+        "file",
+        file
+    );
+
+    formData.append(
+        "type",
+        "image"
+    );
+
+    try {
+
+        const response =
+            await fetch(
+                "/admin-api",
+                {
+                    method: "POST",
+
+                    credentials: "include",
+
+                    body: formData
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Image upload failed"
+            );
+        }
+
+        document.getElementById(
+            "image_key"
+        ).value =
+            data.key;
+
+        document.getElementById(
+            "imageCurrent"
+        ).textContent =
+            `Current: ${data.key}`;
+
+        await saveSettings();
+
+        document.getElementById(
+            "imageFile"
+        ).value = "";
+
+        setStatus(
+            "Image uploaded successfully."
+        );
+
+    } catch (error) {
+
+        setStatus(
+            error.message,
+            true
+        );
+
+        console.error(error);
+    }
+}
+
+
+function setStatus(
+    message,
+    error = false
+) {
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+    status.textContent =
+        message;
+
+    status.style.color =
+        error
+            ? "#c00"
+            : "#111";
 }
 
 
@@ -429,3 +704,4 @@ loadSettings();
 </body>
 
 </html>
+```
