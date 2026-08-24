@@ -1,4 +1,3 @@
-```js
 export async function onRequestGet({ env }) {
     const file = await env.MEDIA.get("songs/main.mp3");
 
@@ -15,4 +14,3 @@ export async function onRequestGet({ env }) {
         }
     });
 }
-```
