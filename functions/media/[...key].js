@@ -1,6 +1,5 @@
 ```js
 export async function onRequestGet({ params, env }) {
-
     const key = params.key;
 
     if (!key) {
@@ -9,8 +8,8 @@ export async function onRequestGet({ params, env }) {
         });
     }
 
-    // Publicly accessible file: preview only.
-    if (key !== "songs/preview.mp3") {
+    // Only the public preview/main audio file is allowed here.
+    if (key !== "songs/main.mp3") {
         return new Response("Not found", {
             status: 404
         });
@@ -19,7 +18,7 @@ export async function onRequestGet({ params, env }) {
     const object = await env.MEDIA.get(key);
 
     if (!object) {
-        return new Response("Preview not found", {
+        return new Response("Audio file not found", {
             status: 404
         });
     }
