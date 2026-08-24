@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Doge vs Elon Musk — Admin</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #111;
+
+    color: #fff;
+}
+
+.container {
+    width: min(850px, 92%);
+
+    margin: auto;
+
+    padding: 50px 0;
+}
+
+h1 {
+    font-size: clamp(40px, 8vw, 70px);
+
+    line-height: .9;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #aaa;
+
+    margin-bottom: 40px;
+
+    font-weight: 700;
+}
+
+.panel {
+    background: #fff;
+
+    color: #111;
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    border: 4px solid #fff;
+}
+
+.field {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 1000;
+
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+}
+
+input,
+textarea {
+    width: 100%;
+
+    padding: 14px;
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    border: 3px solid #111;
+
+    border-radius: 12px;
+
+    outline: none;
+}
+
+textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #ff9f00;
+}
+
+button {
+    width: 100%;
+
+    padding: 17px;
+
+    border: 3px solid #111;
+
+    border-radius: 14px;
+
+    background: #ffd43b;
+
+    color: #111;
+
+    font-size: 18px;
+
+    font-weight: 1000;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff9f00;
+}
+
+.status {
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-weight: 900;
+}
+
+.back {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    color: #fff;
+
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h1>
+ADMIN
+</h1>
+
+<div class="subtitle">
+Doge vs Elon Musk — Site Control
+</div>
+
+
+<div class="panel">
+
+<div class="field">
+
+<label>
+Main Title
+</label>
+
+<input
+    id="title"
+    type="text"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Subtitle
+</label>
+
+<input
+    id="subtitle"
+    type="text"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Price
+</label>
+
+<input
+    id="price"
+    type="text"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Buy Button Text
+</label>
+
+<input
+    id="buy_button"
+    type="text"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+About
+</label>
+
+<textarea
+    id="about"
+></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Song File Key
+</label>
+
+<input
+    id="song_key"
+    type="text"
+    placeholder="Example: songs/doge-vs-elon-musk.mp3"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Image File Key
+</label>
+
+<input
+    id="image_key"
+    type="text"
+    placeholder="Example: images/hero.jpg"
+>
+
+</div>
+
+
+<button
+    onclick="saveSettings()"
+>
+    SAVE CHANGES
+</button>
+
+
+<div
+    class="status"
+    id="status"
+></div>
+
+</div>
+
+
+<a
+    href="/"
+    class="back"
+>
+    ← Back to website
+</a>
+
+</div>
+
+
+<script>
+
+const fields = [
+    "title",
+    "subtitle",
+    "price",
+    "buy_button",
+    "about",
+    "song_key",
+    "image_key"
+];
+
+
+async function loadSettings() {
+
+    try {
+
+        const response =
+            await fetch(
+                "/admin-api"
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "Failed to load settings"
+            );
+        }
+
+        const data =
+            await response.json();
+
+        for (const field of fields) {
+
+            const element =
+                document.getElementById(
+                    field
+                );
+
+            element.value =
+                data[field] || "";
+
+        }
+
+    } catch (error) {
+
+        document.getElementById(
+            "status"
+        ).textContent =
+            "Failed to load settings.";
+
+        console.error(error);
+    }
+}
+
+
+async function saveSettings() {
+
+    const data = {};
+
+    for (const field of fields) {
+
+        data[field] =
+            document.getElementById(
+                field
+            ).value;
+
+    }
+
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    status.textContent =
+        "Saving...";
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/admin-api",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(data)
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Save failed"
+            );
+
+        }
+
+
+        status.textContent =
+            "Saved successfully.";
+
+    } catch (error) {
+
+        status.textContent =
+            "Failed to save.";
+
+        console.error(error);
+    }
+
+}
+
+
+loadSettings();
+
+</script>
+
+</body>
+
+</html>
