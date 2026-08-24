@@ -9,7 +9,7 @@ export async function onRequestGet({ params, env }) {
         });
     }
 
-    // Only allow the public preview file.
+    // Publicly accessible file: preview only.
     if (key !== "songs/preview.mp3") {
         return new Response("Not found", {
             status: 404
@@ -29,6 +29,11 @@ export async function onRequestGet({ params, env }) {
     object.writeHttpMetadata(headers);
 
     headers.set(
+        "Content-Type",
+        "audio/mpeg"
+    );
+
+    headers.set(
         "Cache-Control",
         "public, max-age=3600"
     );
@@ -38,11 +43,8 @@ export async function onRequestGet({ params, env }) {
         "bytes"
     );
 
-    return new Response(
-        object.body,
-        {
-            headers
-        }
-    );
+    return new Response(object.body, {
+        headers
+    });
 }
 ```
