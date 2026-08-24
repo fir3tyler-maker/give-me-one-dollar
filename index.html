@@ -1,8 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Dethrone Elon Musk — Doge vs Elon Musk</title>
 
@@ -12,6 +18,7 @@
 >
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -30,8 +37,6 @@ body {
     overflow-x: hidden;
 }
 
-/* subtle background texture */
-
 body::before {
     content: "";
     position: fixed;
@@ -44,6 +49,7 @@ body::before {
 
     background-size: 22px 22px;
 }
+
 
 /* =========================
    NAVIGATION
@@ -475,6 +481,7 @@ footer {
     }
 
 }
+
 </style>
 </head>
 
@@ -546,20 +553,17 @@ footer {
                 Listen to the song
             </div>
 
-            <!--
-                THE REAL MP3 WILL BE INSERTED HERE.
+            <audio
+                controls
+                preload="metadata"
+            >
+                <source
+                    src="/media/songs/main.mp3"
+                    type="audio/mpeg"
+                >
 
-                Later this will become something like:
-
-                <audio controls>
-                    <source
-                        src="/media/doge-vs-elon-musk.mp3"
-                        type="audio/mpeg"
-                    >
-                </audio>
-            -->
-
-            <audio controls disabled>
+                Your browser does not support
+                audio playback.
             </audio>
 
         </div>
@@ -631,7 +635,7 @@ footer {
 
 
     <!-- =========================
-         ABOUT — SMALL / BOTTOM
+         ABOUT
     ========================== -->
 
     <section class="about">
@@ -780,3 +784,4 @@ setInterval(
 
 </body>
 </html>
+```
