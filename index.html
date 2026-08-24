@@ -138,6 +138,38 @@ nav {
 
 
 /* =========================
+   HERO IMAGE
+========================= */
+
+.hero-image {
+    width: min(700px, 100%);
+
+    margin: 0 auto 35px;
+
+    border: 4px solid #111;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    background: #fffdf4;
+
+    box-shadow: 8px 8px 0 #111;
+}
+
+.hero-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-height: 500px;
+
+    object-fit: cover;
+}
+
+
+/* =========================
    MAIN MESSAGE
 ========================= */
 
@@ -448,6 +480,10 @@ footer {
         padding-top: 55px;
     }
 
+    .hero-image {
+        box-shadow: 5px 5px 0 #111;
+    }
+
     .main-title {
         letter-spacing: -4px;
     }
@@ -490,6 +526,7 @@ footer {
 
 <div class="container">
 
+
     <!-- =========================
          NAVIGATION
     ========================== -->
@@ -516,8 +553,23 @@ footer {
 
     <main class="hero">
 
+
         <div class="eyebrow">
             Original Digital Song
+        </div>
+
+
+        <!-- =========================
+             HERO IMAGE
+        ========================== -->
+
+        <div class="hero-image">
+
+            <img
+                src="/media/images/hero.jpg"
+                alt="Doge vs Elon Musk"
+            >
+
         </div>
 
 
@@ -557,6 +609,7 @@ footer {
                 controls
                 preload="metadata"
             >
+
                 <source
                     src="/media/songs/main.mp3"
                     type="audio/mpeg"
@@ -564,6 +617,7 @@ footer {
 
                 Your browser does not support
                 audio playback.
+
             </audio>
 
         </div>
